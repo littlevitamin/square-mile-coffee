@@ -3,21 +3,24 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
 <style>
   .question-sizes {
     font-size: 4vw;
   }
-
-  .no-filter-or-esp{
+  .no-filter-or-esp {
     color: #000;
   }
-
+  .answer-holder {
+    display: flex;
+    justify-content: center;
+  }
   .scale {
     font-size: 40px;
   }
-
   .filter {
-    color: #007e49;;
+    color: #007e49;
+    ;
   }
   .filter-but {
     background: #007e49;
@@ -31,7 +34,6 @@
     border: none;
     margin-top: 20px;
   }
-
   h1 {
     font-size: 16px;
     text-transform: uppercase;
@@ -42,18 +44,13 @@
     font-size: 16px;
     transition: all .3s ease !important;
     line-height: 46px;
-
   }
-
   .h1-not-open {
     font-size: 32px;
     color: #000;
-    padding-top: 30px; 
+    padding-top: 30px;
     padding-bottom: 30px;
-
-
   }
-
   .espresso {
     color: #960c14;
   }
@@ -69,11 +66,6 @@
     border: none;
     margin-top: 20px;
   }
-
-  .answer-holder {
-    display: flex;
-  }
-
   @-webkit-keyframes scale {
     0% {
       -webkit-transform: scale(1.0);
@@ -83,7 +75,6 @@
       -webkit-transform: scale(2.0);
     }
   }
-
   @keyframes scale {
     0% {
       transform: scale(1.0);
@@ -93,12 +84,20 @@
       transform: scale(2.0);
     }
   }
+
+  /* .subs-msg-holder .no-filter-or-esp {
+    color: #000;
+  }
+    .subs-msg-holder .espresso {
+    color: #960c14;
+  }
+    .subs-msg-holder .filter {
+    color: #007e49;
+  } */
 </style>
 
-
-
-
 <div id="app">
+
   <div class="top-img-holder">
     <div class="top-img-txt-holder">
       {% include 'white-dotted-line' %}
@@ -124,12 +123,12 @@
         <span :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso', 'no-filter-or-esp' : questions.productType == ''}">
           %%questions.productShippingLocation%% </span>
       </div>
-      <div v-if="question0" class="eight-question-sub-parent-holder">
+      {% comment %} <div v-if="question0" class="eight-question-sub-parent-holder">
         <h1
-            :class="{'h1-not-open': (questions.subscriptionPlan == 'Ongoing Subscription' && !question5) || (questions.subscriptionPlan == 'Plan or Gift Subscription' && !question6)}">
+          :class="{'h1-not-open': (questions.subscriptionPlan == 'Ongoing Subscription' && !question5) || (questions.subscriptionPlan == 'Plan or Gift Subscription' && !question6)}">
           Where would you like your coffee delivered? </h1>
         <div
-             class="eight-question-sub-parent-holder">
+          class="eight-question-sub-parent-holder">
           <div class="answer-holder">
             <div id="testing-h-one" style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
               {% include 'dotted-line' %}
@@ -140,13 +139,13 @@
                   <!-- %%priceUK | toCurrency %% total -->
 
                 </p>
-                
-<!--                 <p class="incl_ship"> including shipping</p> -->
+                {%- comment -%}
+                <p class="incl_ship"> including shipping</p>
+                {%- endcomment -%}
                 <div class="fieldlist"
-                     :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                  :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
-                  <input class="center-flow" @change="question0 = !question0" type="radio" id="uk" value="UK"
-                         v-model="questions.productShippingLocation">
+                  <input class="center-flow" onclick="window.location='//shop.squaremilecoffee.com/pages/subscription-flow';"  type="radio" id="uk" value="UK">
                 </div>
               </label>
             </div>
@@ -159,13 +158,15 @@
                 <p id="sub-question-info"> 
                   <!-- %%priceEU | toCurrency %% total -->
                 </p>
-<!--                 <p class="incl_ship"> including shipping</p> -->
+                {%- comment -%}
+                <p class="incl_ship"> including shipping</p>
+                {%- endcomment -%}
 
                 <div class="fieldlist"
-                     :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                  :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
-                  <input class="center-flow" onclick="window.location='//shop.eu.squaremilecoffee.com/pages/subscription-flow';" type="radio" id="europe" value="Europe"
-                         >
+                  <input class="center-flow" @change="question0 = !question0" type="radio" id="europe" value="Europe"
+                    v-model="questions.productShippingLocation">
                 </div>
               </label>
             </div>
@@ -178,47 +179,42 @@
                 <p id="sub-question-info"> 
                   <!-- %%priceRow | toCurrency %% total -->
                 </p>
-<!--                 <p id="sub-question-info-countries">including shipping *additional charges may apply to some countries.
-                </p> -->
+                {%- comment -%}
+                <p id="sub-question-info-countries">including shipping *additional charges may apply to some countries.
+                  {%- endcomment -%}
+                </p>
 
                 <div class="fieldlist"
-                     :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                  :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
-                  <input class="center-flow" @change="question0 = !question0" type="radio" id="rstWorld"
-                         value="Rest of World" v-model="questions.productShippingLocation">
+                  <input class="center-flow" onclick="window.location='//shop.squaremilecoffee.com/pages/subscription-flow/';" type="radio" id="rstWorld"
+                    value="Rest of World">
                 </div>
               </label>
             </div>
           </div>
         </div>
-      </div>
+      </div> {% endcomment %}
     </div>
     <!--  Eight section Delivery Options -->
 
-
-
-
-
-
-
-
-
     <!--  First section Subscription Choice (questionOne = !questionOne) && (changeState('')) &&  -->
-    <div class="question-parent-holder" v-if="!question0">
+    <div class="question-parent-holder" v-if="question0">
       <div @click="resetQuestion" v-if="!question1" class="subs-msg-holder" data-id="1">A Subscription For
         <span id="test"
-              :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso', 'no-filter-or-esp' : questions.productType == ''}"
-              v-if="questions.subscriptionPlan == 'Ongoing Subscription'"> You </span>
+          :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso', 'no-filter-or-esp' : questions.productType == ''}"
+          v-if="questions.subscriptionPlan == 'Ongoing Subscription'"> You </span>
         <span
-              :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso', 'no-filter-or-esp' : questions.productType == ''}"
-              v-if="questions.subscriptionPlan == 'Plan or Gift Subscription'"> You </span> <!--or a gift -->
+          :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso', 'no-filter-or-esp' : questions.productType == ''}"
+          v-if="questions.subscriptionPlan == 'Plan or Gift Subscription'"> You </span>
+        <!--or a gift -->
       </div>
 
       <div v-if="question1" class="fst-question-sub-parent-holder">
-        <h1 style="font-size: 32px; color:#000; padding-top: 30px; padding-bottom: 30px; "> Which Type of Subscription would you like? </h1>
-        <div  class="answer-holder">
-          <div id="testin-h_one"  style="border-right: 1px solid #f2f2f2;" 
-               class="answer-sub-holder">
+        <h1 :class="{'h1-not-open': !question0}"> Which Type of Subscription
+          would you like? </h1>
+        <div class="answer-holder">
+          <div id="testin-h_one" style="border-right: 1px solid #f2f2f2;" class="answer-sub-holder">
             {% include 'dotted-line' %}
             <label id="custom-font" for="ongoingSub">Ongoing Subscription
               <br>
@@ -226,15 +222,16 @@
               <br>
               {% include 'ong-new' %}
               <p class="bold">Want coffee delivered to you regularly, charged via recurring payments? </p>
-              <p id="sub-question-info">Select your preference, filter or espresso beans and sign up for this ongoing weekly, fortnightly or monthly coffee subscription.</p>
+              <p id="sub-question-info">Select your preference, filter or espresso beans and sign up for this ongoing
+                weekly, fortnightly or monthly coffee subscription.</p>
               <div class="fieldlist">
-                <input class="center-flow" @click="animate" @change="question1 = !question1" type="radio"  id="ongoingSub"
-                       value="Ongoing Subscription" v-model="questions.subscriptionPlan">
+                <input class="center-flow" @click="animate" @change="question1 = !question1" type="radio"
+                  id="ongoingSub" value="Ongoing Subscription" v-model="questions.subscriptionPlan">
               </div>
             </label>
           </div>
           <br>
-          <div id="testing-h"  class="answer-sub-holder">
+          <div id="testing-h" class="answer-sub-holder">
             {% include 'dotted-line' %}
             <label for="giftSub">
               PLAN SUBSCRIPTION
@@ -242,12 +239,13 @@
               {% include 'dotted-line' %}
               <br>
               {% include 'gift-new' %}
-              <p  class="bold">Want to plan ahead with a 3, 6 or 12-month coffee subscription? 
+              <p class="bold">Want to plan ahead with a 3, 6 or 12-month coffee subscription?
               </p>
-              <p id="sub-question-info">Select your preference, filter or espresso beans and sign up for this weekly, fortnightly or monthly coffee subscription.</p>
+              <p id="sub-question-info">Select your preference, filter or espresso beans and sign up for this weekly,
+                fortnightly or monthly coffee subscription.</p>
               <div class="fieldlist">
                 <input class="center-flow" @change="question1 = !question1" type="radio" id="giftSub"
-                       value="Plan or Gift Subscription" v-model="questions.subscriptionPlan">
+                  value="Plan or Gift Subscription" v-model="questions.subscriptionPlan">
               </div>
             </label>
           </div>
@@ -255,7 +253,6 @@
       </div>
 
     </div>
-
     <!--  End First section Subscription Choice -->
 
 
@@ -266,7 +263,7 @@
 
       <div @click="resetQuestion" data-id="2" v-if="!question2" class="subs-msg-holder">Of
         <span
-              :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">%%questions.productType%%
+          :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">%%questions.productType%%
         </span>
         <span>Beans</span>
       </div>
@@ -282,26 +279,28 @@
                 {% include 'dotted-line' %}
                 <br>
                 {% include 'filtericon' %}
-                <p id="sub-question-info">Each coffee is roasted to be enjoyed brewed using any filter method whether it be Aeropress, batch brew or a V60. 
+                <p id="sub-question-info">Each coffee is roasted to be enjoyed brewed using any filter method whether it
+                  be Aeropress, batch brew or a V60.
                 </p>
                 <div class="fieldlist">
                   <input class="center-flow" @change="question2 = !question2" type="radio" id="filter" value="Filter"
-                         v-model="questions.productType">
+                    v-model="questions.productType">
                 </div>
               </label>
             </div>
 
-            <div id="testing-h" class="answer-sub-holder">  			
+            <div id="testing-h" class="answer-sub-holder">
               {% include 'dotted-line' %}
               <label for="espresso">Espresso
                 <br>
                 {% include 'dotted-line' %}
                 <br>
                 {% include 'espressoicon' %}
-                <p id="sub-question-info">Each coffee is roasted to be enjoyed using either your espresso machine or stovetop Moka from home, or at the office. </p>
+                <p id="sub-question-info">Each coffee is roasted to be enjoyed using either your espresso machine or
+                  stovetop Moka from home, or at the office. </p>
                 <div class="fieldlist">
-                  <input class="center-flow" @change="question2 = !question2" type="radio" id="espresso" value="Espresso"
-                         v-model="questions.productType">
+                  <input class="center-flow" @change="question2 = !question2" type="radio" id="espresso"
+                    value="Espresso" v-model="questions.productType">
                 </div>
               </label>
             </div>
@@ -311,26 +310,22 @@
       </div>
 
     </div>
-
-
-
-
     <!--  Fourth section Espresso coffee Variants -->
 
     <div class="question-parent-holder">
       <!--  Espresso  -->
       <div @click="resetQuestion" data-id="3" v-if="!question3 && questions.productType == 'Espresso'"
-           class="subs-msg-holder">
+        class="subs-msg-holder">
         <span
-              :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
+          :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
           %%questions.productVariant%% </span>
         <span>Bag</span>
       </div>
       <!--  Filter    -->
       <div @click="resetQuestion" data-id="3" v-if="!question3 && questions.productType == 'Filter'"
-           class="subs-msg-holder">
+        class="subs-msg-holder">
         <span
-              :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
+          :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
           <span v-if="questions.productVariant == 'Filter Blend'">The</span> %%questions.productVariant%% </span>
         <span>Bag</span>
       </div>
@@ -347,12 +342,14 @@
               <label for="redBrick">Red Brick
                 <br>
                 {% include 'dotted-line' %}
-                <p id="sub-question-info">Developed for effortless enjoyment, our signature seasonal espresso blend brings together the best lots of coffee from various producers and origins and is developed to be interesting, approachable and above all, delightful. 
+                <p id="sub-question-info">Developed for effortless enjoyment, our signature seasonal espresso blend
+                  brings together the best lots of coffee from various producers and origins and is developed to be
+                  interesting, approachable and above all, delightful.
                 </p>
                 <div class="fieldlist"
-                     :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso' ,'fieldlist' : questions.productType == ''}">
-                  <input class="center-flow" @change="question3 = !question3" type="radio" id="redBrick" value="Red Brick"
-                         v-model="questions.productVariant">
+                  :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso' ,'fieldlist' : questions.productType == ''}">
+                  <input class="center-flow" @change="question3 = !question3" type="radio" id="redBrick"
+                    value="Red Brick" v-model="questions.productVariant">
                 </div>
               </label>
             </div>
@@ -362,13 +359,15 @@
               <label for="ourPickEspresso">Our Pick
                 <br>
                 {% include 'dotted-line' %}
-                <p id="sub-question-info">We curate a journey through seasonal espressos. Whether it be a favourite from our existing range, a preview of a coffee to come, or a small micro-lot exclusive to our subscribers, we put forward a variety of coffees to delight.
+                <p id="sub-question-info">We curate a journey through seasonal espressos. Whether it be a favourite from
+                  our existing range, a preview of a coffee to come, or a small micro-lot exclusive to our subscribers,
+                  we put forward a variety of coffees to delight.
                 </p>
                 <div class="fieldlist"
-                     :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso' ,'fieldlist' : questions.productType == ''}">
+                  :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso' ,'fieldlist' : questions.productType == ''}">
 
                   <input class="center-flow" @change="question3 = !question3" type="radio" id="ourPickEspresso"
-                         value="Our Pick" v-model="questions.productVariant">
+                    value="Our Pick" v-model="questions.productVariant">
                 </div>
               </label>
             </div>
@@ -378,12 +377,14 @@
               <label for="decaf">Decaf
                 <br>
                 {% include 'dotted-line' %}
-                <p id="sub-question-info">Built on the same taste profile as our Red Brick blend, enjoy a variation of our seasonal blend or single origin decaffeinated espresso developed to be tasty, approachable and above all, delightful. </p>
+                <p id="sub-question-info">Built on the same taste profile as our Red Brick blend, enjoy a variation of
+                  our seasonal blend or single origin decaffeinated espresso developed to be tasty, approachable and
+                  above all, delightful. </p>
                 <div class="fieldlist"
-                     :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso' ,'fieldlist' : questions.productType == ''}">
+                  :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso' ,'fieldlist' : questions.productType == ''}">
 
                   <input class="center-flow" @change="question3 = !question3" type="radio" id="decaf" value="Decaf"
-                         v-model="questions.productVariant">
+                    v-model="questions.productVariant">
                 </div>
               </label>
             </div>
@@ -394,17 +395,19 @@
         <!--  Filter Options   -->
         <div v-if="!question2 && questions.productType == 'Filter'" class="third-question-sub-sub-parent-holder">
           <div class="answer-holder">
-            <div  id="testing-h-one"style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
+            <div id="testing-h-one" style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
               {% include 'dotted-line' %}
               <label for="filterBlend"> The Filter Blend
                 <br>
                 {% include 'dotted-line' %}
-                <p id="sub-question-info">Developed for effortless enjoyment, this seasonal filter blend brings together the best lots of coffee from various producers and origins and is developed to be interesting, approachable and above all, delightful. 
+                <p id="sub-question-info">Developed for effortless enjoyment, this seasonal filter blend brings together
+                  the best lots of coffee from various producers and origins and is developed to be interesting,
+                  approachable and above all, delightful.
                 </p>
                 <div class="fieldlist"
-                     :class="{ 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                  :class="{ 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
                   <input class="center-flow" @change="question3 = !question3" type="radio" id="filterBlend"
-                         value="Filter Blend" v-model="questions.productVariant">
+                    value="Filter Blend" v-model="questions.productVariant">
                 </div>
               </label>
             </div>
@@ -414,13 +417,15 @@
               <label for="ourPick">Our Pick
                 <br>
                 {% include 'dotted-line' %}
-                <p id="sub-question-info">We curate a journey through curious to classic seasonal coffees. Whether it be a favourite from our existing range, a preview of a coffee to come, or a small micro-lot exclusive to our subscribers, we put forward a variety of coffees to delight.</p>
+                <p id="sub-question-info">We curate a journey through curious to classic seasonal coffees. Whether it be
+                  a favourite from our existing range, a preview of a coffee to come, or a small micro-lot exclusive to
+                  our subscribers, we put forward a variety of coffees to delight.</p>
                 <div class="fieldlist"
-                     :class="{ 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                  :class="{ 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
                   <input class="center-flow" @change="question3 = !question3" type="radio" id="ourPick" value="Our Pick"
-                         v-model="questions.productVariant">
+                    v-model="questions.productVariant">
                 </div>
-              </label>	
+              </label>
             </div>
           </div>
 
@@ -437,8 +442,8 @@
 
       <div class="question-parent-holder">
         <div @click="resetQuestion" data-id="4" v-if="!question4" class="subs-msg-holder">In a
-          <span 
-                :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
+          <span
+            :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
             %%questions.productBagSize%% </span>
           <span>Bag</span>
         </div>
@@ -448,16 +453,16 @@
             <div class="answer-holder">
               <div id="testing-h-one" style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
                 {% include 'dotted-line' %}
-                <label for="small">350G
+                <label for="small" >350G
                   <br>
                   {% include 'dotted-line' %}
                   <br>
                   {% include 'small-bag' %}
                   <p id="sub-question-info">The perfect size for individuals.</p>
                   <div class="fieldlist"
-                       :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                    :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
                     <input class="center-flow" @change="question4 = !question4; priceAmount()" type="radio" id="small" value="350G"
-                           v-model="questions.productBagSize">
+                      v-model="questions.productBagSize">
                   </div>
                 </label>
               </div>
@@ -471,10 +476,10 @@
                   {% include 'big-bag' %}
                   <p id="sub-question-info">Ideal for teams, families or thirsty people.</p>
                   <div class="fieldlist"
-                       :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                    :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
                     <input class="center-flow" @change="question4 = !question4; priceAmount()" type="radio" id="large" value="1KG"
-                           v-model="questions.productBagSize">
+                      v-model="questions.productBagSize">
                   </div>
                 </label>
               </div>
@@ -491,11 +496,11 @@
 
       <!--  Sixth section Filter Type Delivery Options -->
       <!--   v-if="subscriptionPlan == 'Ongoing Subscription' || subscriptionPlan == ''
--->
+   -->
       <div class="sixth-section">
         <div @click="resetQuestion" data-id="5" v-if="!question5" class="subs-msg-holder">Delivered
           <span
-                :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
+            :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
             %%questions.productDeliveryFrequency%% </span>
         </div>
         <div v-if="question5" class="fifth-question-sub-parent-holder">
@@ -504,83 +509,81 @@
             <div class="answer-holder">
               <div id="testing-h-one" style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
                 {% include 'dotted-line' %}
-                <label  for="weekly">Weekly
+                <label for="weekly">Weekly
                   <br>
                   {% include 'dotted-line' %}
-                  
-                   <p id="sub-question-info" v-if="questions. productShippingLocation == 'UK' && questions.subscriptionPlan == 'Ongoing Subscription'">
-                    %%priceUK | toCurrency %% total including shipping
+
+                  <p id="sub-question-info" v-if="questions.subscriptionPlan == 'Ongoing Subscription'">
+                    %%priceEU | toCurrency %% total including shipping
                   </p>
-                    <p id="sub-question-info"  v-if="questions. productShippingLocation == 'Rest of World' && questions.subscriptionPlan == 'Ongoing Subscription'">
-                    %%priceRow | toCurrency %% total including shipping
-                  </p>
-                  
-                  
-                  <p id="sub-question-info" v-if="questions.productType == 'Filter'">If coffee is your go-to, a weekly 350g bag is perfect for 3-4 cups a day and a 1kg bag is perfect for 9-10 cups a day.</p>
-                  <p id="sub-question-info"    v-if="questions.productType == 'Espresso'">If coffee is your go-to, a 350g bag is perfect for 2-3 cups a day and a 1kg bag for 7-8 cups a day. </p>
+
+                  <p id="sub-question-info" v-if="questions.productType == 'Filter'">If coffee is your go-to, a weekly
+                    350g bag is perfect for 3-4 cups a day and a 1kg bag is perfect for 9-10 cups a day.</p>
+                  <p id="sub-question-info" v-if="questions.productType == 'Espresso'">If coffee is your go-to, a 350g
+                    bag is perfect for 2-3 cups a day and a 1kg bag for 7-8 cups a day. </p>
 
                   <div class="fieldlist"
-                       :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                    :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
-                    <input class="center-flow" @change="question5 = !question5; priceAmount()" type="radio" id="weekly" value="Weekly"
-                           v-model="questions.productDeliveryFrequency">
+                    <input class="center-flow" @change="question5 = !question5; priceAmount();" type="radio" id="weekly" value="Weekly"
+                      v-model="questions.productDeliveryFrequency">
                   </div>
                 </label>
               </div>
               <br>
-              <div  id="testing-h-one" style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
+              <div id="testing-h-one" style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
                 {% include 'dotted-line' %}
                 <label for="fortnightly">Fortnightly
                   <br>
                   {% include 'dotted-line' %}
-                    <p id="sub-question-info" v-if="questions. productShippingLocation == 'UK' && questions.subscriptionPlan == 'Ongoing Subscription'">
-                    %%priceUK | toCurrency %% total including shipping
-                  </p>
-                    <p id="sub-question-info"  v-if="questions. productShippingLocation == 'Rest of World' && questions.subscriptionPlan == 'Ongoing Subscription'">
-                    %%priceRow | toCurrency %% total including shipping
-                  </p>
-                  
-                  <p id="sub-question-info" v-if="questions.productType == 'Filter'">For the ultimate convenience, a fortnightly 350g bag is perfect for 1-2 cups a day and a 1kg bag for 4-5 cups a day.</p>
-                  <p id="sub-question-info"    v-if="questions.productType == 'Espresso'">For the ultimate convenience, a fortnightly 350g bag is perfect for 1-2 cups a day and a 1kg bag for 3-4 cups a day.</p>
+
+                      <p id="sub-question-info" v-if="questions.subscriptionPlan == 'Ongoing Subscription'">
+                        %%priceEU | toCurrency %% total including shipping
+                      </p>
+
+                  <p id="sub-question-info" v-if="questions.productType == 'Filter'">For the ultimate convenience, a
+                    fortnightly 350g bag is perfect for 1-2 cups a day and a 1kg bag for 4-5 cups a day.</p>
+                  <p id="sub-question-info" v-if="questions.productType == 'Espresso'">For the ultimate convenience, a
+                    fortnightly 350g bag is perfect for 1-2 cups a day and a 1kg bag for 3-4 cups a day.</p>
 
                   <div class="fieldlist"
-                       :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                    :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
                     <input class="center-flow" @change="question5 = !question5; priceAmount()" type="radio" id="fortnightly"
-                           value="Fortnightly" v-model="questions.productDeliveryFrequency">
+                      value="Fortnightly" v-model="questions.productDeliveryFrequency">
                   </div>
                 </label>
               </div>
               <br>
               <div class="answer-sub-holder">
                 {% include 'dotted-line' %}
-                <label for="monthly">Monthly
+                <label  for="monthly">Monthly
                   <br>
                   {% include 'dotted-line' %}
                   
-                    <p id="sub-question-info" v-if="questions. productShippingLocation == 'UK' && questions.subscriptionPlan == 'Ongoing Subscription'">
-                    %%priceUK | toCurrency %% total including shipping
-                  </p>
-                    <p id="sub-question-info"  v-if="questions. productShippingLocation == 'Rest of World' && questions.subscriptionPlan == 'Ongoing Subscription'">
-                    %%priceRow | toCurrency %% total including shipping
-                  </p>
-                  
-                  <p id="sub-question-info" v-if="questions.productType == 'Filter'">Always out over weekends? A monthly 350g bag is perfect for a weekday morning cup and a 1kg bag makes 3 cups per day, great for those who work from home.</p>
-                  <p id="sub-question-info"    v-if="questions.productType == 'Espresso'">Always out over weekends? A monthly 350g bag is perfect for a weekday morning cup and a 1kg bag makes 2-3 cups per day.</p>
+                      <p id="sub-question-info" v-if="questions.subscriptionPlan == 'Ongoing Subscription'">
+                        %%priceEU | toCurrency %% total including shipping
+                      </p>
+
+                  <p id="sub-question-info" v-if="questions.productType == 'Filter'">Always out over weekends? A monthly
+                    350g bag is perfect for a weekday morning cup and a 1kg bag makes 3 cups per day, great for those
+                    who work from home.</p>
+                  <p id="sub-question-info" v-if="questions.productType == 'Espresso'">Always out over weekends? A
+                    monthly 350g bag is perfect for a weekday morning cup and a 1kg bag makes 2-3 cups per day.</p>
 
                   <div class="fieldlist"
-                       :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                    :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
-                    <input class="center-flow" @change="question5 = !question5; priceAmount()" type="radio" id="monthly" value="Monthly"
-                           v-model="questions.productDeliveryFrequency">
+                    <input class="center-flow" @change="question5 = !question5; priceAmount()" type="radio" id="monthly"
+                      value="Monthly" v-model="questions.productDeliveryFrequency">
                   </div>
                 </label>
               </div>
 
             </div>
             <div class="test-content-container">
-              <p>All our subscriptions ship on Wednesdays; monthly filter 
-                subscriptions ship on the first one 
+              <p>All our subscriptions ship on Wednesdays; monthly filter
+                subscriptions ship on the first one
                 of the month and monthly espresso subscriptions ship on the third.
                 Fortnightly subs ship every other Wednesday.</p>
             </div>
@@ -599,7 +602,7 @@
       <div class="sevent-section-parent-holder" v-if="questions.subscriptionPlan == 'Plan or Gift Subscription'">
         <div @click="resetQuestion" data-id="6" v-if="!question6" class="subs-msg-holder">For
           <span
-                :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
+            :class="{ 'filter' : questions.productType == 'Filter' ,  'espresso' : questions.productType == 'Espresso'}">
             %%questions.productDurationFrequency%% </span>
         </div>
         <div v-if="question6" class="eight-question-sub-parent-holder">
@@ -608,63 +611,63 @@
             <div class="answer-holder">
               <div id="testing-h-one" style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
                 {% include 'dotted-line' %}
-                <label @change="priceAmount" for="threeMonths">3 Months
+                <label for="threeMonths">3 Months
                   <br>
                   {% include 'dotted-line' %}
-                  
-                   <p id="sub-question-info" >
+
+                  <p id="sub-question-info" >
                     %%planSubPriceEU3 | toCurrency %% total including shipping
                   </p>
-                  
-                  
+
+
                   <p id="sub-question-info">Sign up to receive coffee for 3 months.</p>
                   <div class="fieldlist"
-                       :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                    :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
-                    <input class="center-flow" @change="question6 = !question6" type="radio" id="threeMonths"
-                           value="3 Months" v-model="questions.productDurationFrequency">
+                    <input class="center-flow" @change="question6 = !question6; priceAmount()" type="radio" id="threeMonths"
+                      value="3 Months" v-model="questions.productDurationFrequency">
                   </div>
                 </label>
               </div>
               <br>
               <div id="testing-h-one" style="border-right: 1px solid #f2f2f2" class="answer-sub-holder">
                 {% include 'dotted-line' %}
-                <label @change="priceAmount" for="sixMonths">6 Months
+                <label for="sixMonths">6 Months
                   <br>
                   {% include 'dotted-line' %}
-                  
-                   <p id="sub-question-info" >
+
+                  <p id="sub-question-info">
                     %%planSubPriceEU6 | toCurrency %% total including shipping
                   </p>
-                  
-                  
+
+
                   <p id="sub-question-info">Sign up to receive coffee for 6 months.</p>
                   <div class="fieldlist"
-                       :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                    :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
-                    <input class="center-flow" @change="question6 = !question6" type="radio" id="sixMonths"
-                           value="6 Months" v-model="questions.productDurationFrequency">
+                    <input class="center-flow" @change="question6 = !question6; priceAmount()" type="radio" id="sixMonths"
+                      value="6 Months" v-model="questions.productDurationFrequency">
                   </div>
                 </label>
               </div>
               <br>
-              <div  class="answer-sub-holder">
+              <div class="answer-sub-holder">
                 {% include 'dotted-line' %}
-                <label @change="priceAmount" for="Twelve Months">12 Months
+                <label for="Twelve Months">12 Months
                   <br>
                   {% include 'dotted-line' %}
-                  
-                   <p id="sub-question-info" >
+
+                  <p id="sub-question-info" >
                     %%planSubPriceEU12 | toCurrency %% total including shipping
                   </p>
-                  
-                  
+
+
                   <p id="sub-question-info">Sign up to receive coffee for 12 months.</p>
                   <div class="fieldlist"
-                       :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
+                    :class="{ 'fieldlist-espresso' : questions.productType == 'Espresso', 'fieldlist-filter' : questions.productType == 'Filter' ,'fieldlist' : questions.productType == ''}">
 
-                    <input class="center-flow" @change="question6 = !question6" type="radio" id="Twelve Months"
-                           value="12 Months" v-model="questions.productDurationFrequency">
+                    <input class="center-flow" @change="question6 = !question6; priceAmount()" type="radio" id="Twelve Months"
+                      value="12 Months" v-model="questions.productDurationFrequency">
                   </div>
                 </label>
               </div>
@@ -672,20 +675,9 @@
           </div>
         </div>
       </div>
-
-
       <!--  End Seventh section Espresso Type Delivery Options -->
 
-
-
-
-
-
-
-
-
-
-     <div class="prd-summary">
+      <div class="prd-summary">
         <h1
           :class="{'h1-not-open': (questions.subscriptionPlan == 'Ongoing Subscription' && !question5) || (questions.subscriptionPlan == 'Plan or Gift Subscription' && !question6)}">
           %%summary%% </h1>
@@ -702,25 +694,9 @@
             %%questions.productShippingLocation%% </p>
           <p v-if="questions.productShippingLocation == 'Europe'">%%priceEU | toCurrency%% <span
               v-if="questions.subscriptionPlan == 'Ongoing Subscription'">recurring</span> payment</p>
-          
-          {%- comment -%} Price for Uk Ongoing Subs {%- endcomment -%}
-          <p v-if="questions.productShippingLocation == 'UK' && questions.subscriptionPlan == 'Ongoing Subscription'">%%priceUK | toCurrency%% <span
+          <p v-if="questions.productShippingLocation == 'UK'">%%priceUK | toCurrency%% <span
               v-if="questions.subscriptionPlan == 'Ongoing Subscription'">recurring</span> payment</p>
-
-
-          {%- comment -%} Price for Uk Plan  Subs {%- endcomment -%}
-          <p v-if="questions.subscriptionPlan == 'Plan or Gift Subscription' && questions.productDurationFrequency == '12 Months'">
-            %%planSubPriceEU12 | toCurrency%% payment
-          </p>
-          <p v-if="questions.subscriptionPlan == 'Plan or Gift Subscription' && questions.productDurationFrequency == '6 Months'">
-            %%planSubPriceEU6 | toCurrency%% payment
-          </p>
-          <p v-if="questions.subscriptionPlan == 'Plan or Gift Subscription' && questions.productDurationFrequency == '3 Months'">
-            %%planSubPriceEU3 | toCurrency%% payment
-          </p>
-
-
-          <p v-if="questions.productShippingLocation == 'Rest of World' && questions.subscriptionPlan == 'Ongoing Subscription'">%%priceRow | toCurrency%% <span
+          <p v-if="questions.productShippingLocation == 'Rest of World'">%%priceRow | toCurrency%% <span
               v-if="questions.subscriptionPlan == 'Ongoing Subscription'">recurring</span> payment</p>
 
           <p v-if="questions.subscriptionPlan == 'Ongoing Subscription' && !question5">
@@ -728,7 +704,6 @@
           <p v-if="questions.subscriptionPlan != 'Ongoing Subscription' && !question6">
             %%questions.productDurationFrequency%% prepaid</p>
 
-           <p v-show="questions.productShippingLocation == 'Rest of World'" > *additional charges may apply to some countries</p>
           {% include 'dotted-line' %}
           <br />
 
@@ -748,20 +723,22 @@
 </div>
 
 
+
+
 <script type="text/javascript">
-  var products = [{%for product in collections[section.settings.feature_collection].products%}{{product|json}}{%if forloop.last == false%},{%endif%}{%endfor%}]
+  {% paginate collections[section.settings.feature_collection].products by 1000 %}
+  var products = [{%for product in collections[section.settings.feature_collection].products %}{{ product | json }} {%if forloop.last == false %}, {% endif %} {% endfor %}]
+  {% endpaginate %}
 </script>
+
 
 <script type="application/javascript">
   Vue.filter('toCurrency', function (value) {
     if (!value) return ''
-
     return Shopify.formatMoney(value);
   });
 
-
   var app = new Vue({
-
     el: '#app',
     delimiters: ['%%', '%%'],
     data() {
@@ -770,7 +747,7 @@
         info: null,
 
         questions: {
-    	  productShippingLocation: "",
+          productShippingLocation: "",
           subscriptionPlan: "",
           productType: "",
           productVariant: "",
@@ -791,35 +768,35 @@
         animated: false,
         allProducts: [],
         productId: '',
+        sellingPlan: '',
         priceEU: 0,
         priceUK: 0,
         priceRow: 0,
         myDate: '',
         howOftenQuestionInfo: '',
         priceSummery: 0,
-        
- 
-              planSubPriceEU3: 0,
-        planSubPriceEU6: 0,
-        planSubPriceEU12: 0,
+        planSubPriceEU3: 0,
+          planSubPriceEU6: 0,
+          planSubPriceEU12: 0,
+          planSubPriceUK: 0,
+          planSubPriceRow: 0,
       }
 
 
     },
 
-    mounted: function() {
-      for (let i = 0; i < products.length; i++ ){
+    mounted: function () {
+      for (let i = 0;i < products.length;i++) {
         //            	 console.log(products[i].price);
         this.allProducts.push({
-          "variants": products[i].variants, 
+          "variants": products[i].variants,
           "title": products[i].title,
-          "price":products[i].price,
-
+          "price": products[i].price,
         });
       }
 
       var d = new Date();
-      //           console.log(new Date(2022, 10, 17, 10, 33, 30, 0))
+      // var d = new Date(2022, 10, 17, 10, 33, 38);
 
       if(d.getDay() != 3 ){
         d.setDate(d.getDate() + (3 + 7 - d.getDay()) % 7);
@@ -829,7 +806,8 @@
 
       var options = { 'weekday': 'long', 'month': 'long', 'day': '2-digit', 'year': 'numeric' };
       this.myDate = d.toLocaleString('en-En', options);
-    },   
+
+    },
 
 
     methods: {
@@ -838,16 +816,27 @@
       },
 
 
-      openQuestion: function (event){
+
+
+      //         newDateRoasting: function(){
+      //         this.myDate = new Date();
+      //         this.myDate.setDate(this.myDate.getDate() + (3 + 7 - this.myDate.getDay()) % 7);
+      //         var arr1 = this.myDate.split(' ').slice(0, 4).join(' ');
+      // 		console.log(this.myDate, arr1[0] );
+
+      //         },
+
+
+      openQuestion: function (event) {
 
         var questionNumberBuild;
         var questionNumber = event.currentTarget.getAttribute('data-id');
         questionNumberBuild = 'question' + questionNumber;
-        for (var i = questionNumber; i <= 8; i++) {
+        for (var i = questionNumber;i <= 8;i++) {
           questionNumberBuild = 'question' + i;
 
           if (questionNumber == i) {
-            this[ questionNumberBuild] = false;
+            this[questionNumberBuild] = false;
 
           }
 
@@ -858,7 +847,7 @@
 
       },
 
-     priceAmount: function () {
+      priceAmount: function () {
         var context = this;
         Vue.nextTick(function () {
         var ProductBuildSku;
@@ -868,10 +857,11 @@
         var NewMonths;
         var NewProductVariant;
         var Price;
-          
-       var priceEU3;
+        var priceEU3;
         var priceEU6;
         var priceEU12;
+        var priceUK;
+        var priceRow;
 
         switch (context.questions.productShippingLocation) {
           case "Europe":
@@ -926,6 +916,7 @@
           ].filter(Boolean).join('-');
 
         } else {
+          // debugger
           var ProductBuild = [
             context.questions.productType,
             NewProductVariant,
@@ -934,10 +925,8 @@
             NewMonths,
             NewShippingLocation
           ].filter(Boolean).join('-');
-          
-          
-          
-           var priceEU3 = [
+
+          var priceEU3 = [
             context.questions.productType.toLowerCase(),
             NewProductVariant.toLowerCase(),
             context.questions.productBagSize.toLowerCase(),
@@ -963,9 +952,12 @@
             "12mo",
             NewShippingLocation.toLowerCase(),
           ].filter(Boolean).join('-');
-            
-            
+
         }
+
+
+
+        
 
 
         ProductBuildSku = ProductBuild.toLowerCase();
@@ -995,78 +987,41 @@
             }
           }
         };
-          
-          
-          
-
-          
-//           debugger
+   
+   
         for (let i = 0;i < context.allProducts.length;i++) {
           for (let b = 0;b < context.allProducts[i].variants.length;b++) {
-            
             var productSku = context.allProducts[i].variants[b].sku.toLowerCase();
-
             if (productSku.includes(priceEU3)) {
-                
-              var splitted = context.allProducts[i].variants[b].price
-              var country = context.questions.productShippingLocation;
-              if (country == "UK") {
-                context.planSubPriceEU3 = context.allProducts[i].variants[b].price;
-              }
-            }
-            if (productSku.includes(priceEU6)) {
-              var splitted = context.allProducts[i].variants[b].price
-              var country = context.questions.productShippingLocation;
-              if (country == "UK") {
-                context.planSubPriceEU6 = context.allProducts[i].variants[b].price;
-              }
-            }
-            if (productSku.includes(priceEU12)) {
-              var splitted = context.allProducts[i].variants[b].price
-              var country = context.questions.productShippingLocation;
-              if (country == "UK") {
-                context.planSubPriceEU12 = context.allProducts[i].variants[b].price;
-              }
-            }
-            
-            
-            
-            
-            
-               if (productSku.includes(priceEU3)) {
               
               var splitted = context.allProducts[i].variants[b].price
               var country = context.questions.productShippingLocation;
-              if (country == "Rest of World") {
+              if (country == "Europe") {
                 context.planSubPriceEU3 = context.allProducts[i].variants[b].price;
               }
             }
             if (productSku.includes(priceEU6)) {
               var splitted = context.allProducts[i].variants[b].price
               var country = context.questions.productShippingLocation;
-              if (country == "Rest of World") {
+              if (country == "Europe") {
                 context.planSubPriceEU6 = context.allProducts[i].variants[b].price;
               }
             }
             if (productSku.includes(priceEU12)) {
               var splitted = context.allProducts[i].variants[b].price
               var country = context.questions.productShippingLocation;
-              if (country == "Rest of World") {
+              if (country == "Europe") {
                 context.planSubPriceEU12 = context.allProducts[i].variants[b].price;
               }
             }
-            
-            
-            
-            
           }
         };
-          
-          
-          
-          
+
+
       })
       },
+
+
       resetQuestion: function (event) {
 
         var questionNumberBuild;
@@ -1082,6 +1037,7 @@
 
         for (const [index, [key, value]] of Object.entries(Object.entries(this.questions))) {
           // console.log(`${index}: ${key} = ${value}`);
+          // console.log(questionNumber-1);
           // debugger
           if (index > questionNumber - 1) {
             this.questions[key] = "";
@@ -1091,13 +1047,13 @@
       },
 
 
-      checkoutButton(){
+      checkoutButton() {
         var ProductBuildSku;
         var NewShippingLocation;
         var NewMonths;
         var NewProductVariant;
 
-        switch(this.questions.productShippingLocation) {
+        switch (this.questions.productShippingLocation) {
           case "Europe":
             NewShippingLocation = "eu";
             break;
@@ -1110,7 +1066,7 @@
 
         };
 
-        switch(this.questions.productDurationFrequency) {
+        switch (this.questions.productDurationFrequency) {
           case "3 Months":
             NewMonths = "3mo";
             break;
@@ -1123,13 +1079,13 @@
 
         };
 
-        switch(this.questions.productVariant){
+        switch (this.questions.productVariant) {
           case "Filter Blend":
             NewProductVariant = "blend";
             break;
           case "Our Pick":
             NewProductVariant = "ourpick";
-            break;		    
+            break;
           case "Decaf":
             NewProductVariant = "decaf";
             break;
@@ -1140,7 +1096,7 @@
 
         };
 
-        if (this.questions.subscriptionPlan == 'Ongoing Subscription'){
+        if (this.questions.subscriptionPlan == 'Ongoing Subscription') {
           var ProductBuild = [
             this.questions.productType,
             NewProductVariant,
@@ -1164,26 +1120,26 @@
 
 
 
-        for( let i = 0; i < this.allProducts.length; i++ ){
+       
+        // for (let i = 0;i < this.allProducts.length;i++) {
+        //   for (let b = 0;b < this.allProducts[i].variants.length;b++) {
+        //     var productSku = this.allProducts[i].variants[b].sku.toLowerCase();
+        //     if (productSku == ProductBuildSku) {
+        //       this.productId = this.allProducts[i].variants[b].id;
+        //       this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
+        //       console.log(`sell_plan: ${this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id}`);
+        //       console.log(`var_id:${this.allProducts[i].variants[b].id}`);
+        //     }
+        //   }
+        // };
 
-          for( let b = 0; b < this.allProducts[i].variants.length; b++){
-            var productSku = this.allProducts[i].variants[b].sku.toLowerCase();
-            if(productSku == ProductBuildSku){
-              this.productId = this.allProducts[i].variants[b].id
-              console.log(this.allProducts[i].variants[b].id);
-
-            }
-          }
-        };
+      
 
 
-
-        if(this.questions.subscriptionPlan == 'Ongoing Subscription' ){
-
+        if (this.questions.subscriptionPlan == 'Ongoing Subscription') {
           var shipping_frequency;
           var shipping_interval_unit;
-
-          switch(this.questions.productDeliveryFrequency) {
+          switch (this.questions.productDeliveryFrequency) {
             case "Fortnightly":
               shipping_interval_unit = "14";
               break;
@@ -1193,52 +1149,53 @@
             case "Monthly":
               shipping_interval_unit = "30";
               break;
-
           };
 
+  
+        for (let i = 0;i < this.allProducts.length;i++) {
+          for (let b = 0;b < this.allProducts[i].variants.length;b++) {
 
-
-
-
+            var productSku = this.allProducts[i].variants[b].sku.toLowerCase();
+            if (productSku == ProductBuildSku) {
+           
+              this.productId = this.allProducts[i].variants[b].id;
+              if(this.questions.productDeliveryFrequency == "Weekly") {
+                this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
+              } else if(this.questions.productDeliveryFrequency == "Fortnightly") {
+                  this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[1].selling_plan_id;
+              } else {
+                  this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[2].selling_plan_id;
+              }
+              console.log(`sell_plan: ${this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id}`);
+              console.log(`var_id:${this.allProducts[i].variants[b].id}`);
+            }
+          }
+        };
 
           var data = {
             "id": this.productId,
             "quantity": 1,
-            "properties": {
-              "shipping_interval_frequency": shipping_interval_unit,
-              "shipping_interval_unit_type": "days",
-
-            }
+            "selling_plan": this.sellingPlan,
           }
-          //    debugger    
+   
           jQuery.ajax({
             type: 'POST',
             url: '/cart/add.js',
             data: data,
             dataType: 'json',
-            success:function reChargeProcessCart() {
-              function get_cookie(name){ return( document.cookie.match('(^|; )'+name+'=([^;]*)')||0 )[2] }
-              do {
-                token=get_cookie('cart');
-              }
-              while(token == undefined);
+            success: function reChargeProcessCart() {
+          	 window.location = '/checkout';
+            }
+          });
+        }
+       
 
-              var myshopify_domain='{{ shop.permanent_domain }}'
-              try { var ga_linker = ga.getAll()[0].get('linkerParam') } catch(err) { var ga_linker ='' }
-              var customer_param = '{% if customer %}customer_id={{customer.id}}&customer_email={{customer.email}}{% endif %}'
-              window.location= "https://checkout.rechargeapps.com/r/checkout?myshopify_domain="+myshopify_domain+"&cart_token="+token+"&"+ga_linker+"&"+customer_param;
-
-            } 
-
-          });}
-
-
-        if(this.questions.subscriptionPlan == 'Plan or Gift Subscription') {
+        if (this.questions.subscriptionPlan == 'Plan or Gift Subscription') {
           var testOption = this.questions.productSubscriptionOption;
           var shipping_interval_unit;
 
 
-          switch(this.questions.productDeliveryFrequency) {
+          switch (this.questions.productDeliveryFrequency) {
             case "Fortnightly":
               shipping_interval_unit = "14";
               break;
@@ -1251,7 +1208,7 @@
 
           };
 
-          switch(this.questions.productDurationFrequency) {
+          switch (this.questions.productDurationFrequency) {
             case "3 Months":
               shipping_frequency = "90";
               break;
@@ -1264,37 +1221,32 @@
 
           };
 
+         
 
+      for (let i = 0;i < this.allProducts.length;i++) {
+        for (let b = 0;b < this.allProducts[i].variants.length;b++) {
+          var productSku = this.allProducts[i].variants[b].sku.toLowerCase();
+          if (productSku == ProductBuildSku) {
+       
+            debugger
 
-          if( this.questions.productSubscriptionOption == "Gifting") {
+            if(this.allProducts[i].variants[b].selling_plan_allocations.length ) {
+            this.productId = this.allProducts[i].variants[b].id;
+            this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
+            console.log(`sell_plan: ${this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id}`);
+            console.log(`var_id:${this.allProducts[i].variants[b].id}`);
+            }
+            
+          }
+        }
+      };
+         debugger
             var data = {
               "id": this.productId,
               "quantity": 1,
-              "properties": {
-                "shipping_interval_frequency": shipping_interval_unit,
-                "shipping_interval_unit_type": "days",
-                "charge_interval_frequency": shipping_frequency,
-                "charge_interval_unit_type": "days",
-                "number_charges_until_expiration": 1 ,
-                "gift": true
-              }
+           "selling_plan": this.sellingPlan,
             }
-            } else {
-              var data = {
-                "id": this.productId,
-                "quantity": 1,
-                "properties": {
-                  "shipping_interval_frequency": shipping_interval_unit,
-                  "shipping_interval_unit_type": "days",
-                  "charge_interval_frequency": shipping_frequency,
-                  "charge_interval_unit_type": "days",
-                  "number_charges_until_expiration": 1 ,
-                }
-              }          
-
-              }
-
-
+          
 
           //    debugger    
           jQuery.ajax({
@@ -1302,39 +1254,25 @@
             url: '/cart/add.js',
             data: data,
             dataType: 'json',
-
-            beforeSend: function () {
-              console.log('beforeSend')},
-
-            success:function() {
-              //         debugger
-              if ( testOption  == 'Gifting'){ 
-                window.location.href = '/cart'; 
-
-              }
-              else  {
-                function get_cookie(name){ return( document.cookie.match('(^|; )'+name+'=([^;]*)')||0 )[2] }
-                do {
-                  token=get_cookie('cart');
-                }
-                while(token == undefined);
-
-                var myshopify_domain='{{ shop.permanent_domain }}'
-                try { var ga_linker = ga.getAll()[0].get('linkerParam') } catch(err) { var ga_linker ='' }
-                var customer_param = '{% if customer %}customer_id={{customer.id}}&customer_email={{customer.email}}{% endif %}'
-                window.location= "https://checkout.rechargeapps.com/r/checkout?myshopify_domain="+myshopify_domain+"&cart_token="+token+"&"+ga_linker+"&"+customer_param;
-                //           /checkout
-              }
-
-
+            success: function () {
+              window.location = '/checkout';
             },
             error: function (XMLHttpRequest) {
               console.log(XMLHttpRequest.responseText);
             }
-          });}
-      }, 
+          });
+        }
+
+      },
 
     },
+
+    //          mounted () {
+    //     axios
+    //       .get('/admin/api/2020-07/orders/{order_id}/fulfillments.json')
+    //       .then(response => (this.info = response))
+    //   },
+
   });
 </script>
 
