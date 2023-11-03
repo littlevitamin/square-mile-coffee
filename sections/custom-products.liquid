@@ -48,7 +48,6 @@
     assign show_desktop_slider = true
   endif
 -%}
-
 <div class="color-{{ section.settings.color_scheme }} isolate gradient">
   <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
@@ -71,6 +70,12 @@
       {%- endif -%}
     </div>
 
+    <div class="page-width" id="filter-options">
+      <button id="show-all">Show All</button>
+      <button id="show-filter">Show Filter</button>
+      <button id="show-espresso">Show Espresso</button>
+    </div>
+
     <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
         id="Slider-{{ section.id }}"
@@ -86,6 +91,12 @@
               data-cascade
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
+            {% if product.tags contains 'filter' %}
+              data-tags="filter"
+            {% endif %}
+            {% if product.tags contains 'espresso' %}
+              data-tags="espresso"
+            {% endif %}
           >
             {% render 'card-product',
               card_product: product,
@@ -95,7 +106,8 @@
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
               show_quick_add: section.settings.enable_quick_add,
-              section_id: section.id
+              section_id: section.id,
+              product_tags: product.tags | join: ","
             %}
             {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
             {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true -%}
@@ -164,6 +176,52 @@
     {%- endif -%}
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select the product list container
+    var productList = document.querySelector(".product-grid");
+
+    // Select the filter buttons
+    var showAllButton = document.getElementById("show-all");
+    var showFilterButton = document.getElementById("show-filter");
+    var showEspressoButton = document.getElementById("show-espresso");
+
+    // Add click event listeners to the filter buttons
+    showAllButton.addEventListener("click", function() {
+      filterProducts("all");
+    });
+
+    showFilterButton.addEventListener("click", function() {
+      filterProducts("filter");
+    });
+
+    showEspressoButton.addEventListener("click", function() {
+      filterProducts("espresso");
+    });
+
+    // Function to filter products based on the selected tag
+    function filterProducts(tag) {
+      var productItems = productList.querySelectorAll(".grid__item");
+
+      productItems.forEach(function(item) {
+        var product = item.querySelector(".card-product");
+        var tags = product.dataset.tags.split(",");
+
+        if (tag === "all" || tags.includes(tag)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+
+    // Initialize by showing all products
+    filterProducts("all");
+  });
+</script>
+
+
 
 {% schema %}
 {
