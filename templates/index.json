@@ -39,44 +39,6 @@
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
-    "f02050c8-8d60-48ca-9638-8be90e4d1b25": {
-      "type": "sub-flow",
-      "settings": {
-        "feature_collection": "coffee",
-        "title": "Carefully selected coffee through your door",
-        "paragraph_message_1": "Our subscription coffees are selected to showcase exceptional seasonal coffee that express their process and origin with clarity. This could be a coffee from our existing range, a preview of a new release, or a small micro-lot exclusive to our subscribers.",
-        "paragraph_message_2": "All subscription coffee is roasted to order and dispatched in a mailbox* friendly package every Wednesday.",
-        "paragraph_message_3": "*Height of mailbox package is 40mm, based on the average letterbox height in the UK*"
-      }
-    },
     "e4c77ba8-68aa-4087-b2ba-d8b02b4f535b": {
       "type": "custom-products",
       "settings": {
@@ -104,12 +66,21 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "f02050c8-8d60-48ca-9638-8be90e4d1b25": {
+      "type": "sub-flow",
+      "settings": {
+        "feature_collection": "coffee",
+        "title": "Carefully selected coffee through your door",
+        "paragraph_message_1": "Our subscription coffees are selected to showcase exceptional seasonal coffee that express their process and origin with clarity. This could be a coffee from our existing range, a preview of a new release, or a small micro-lot exclusive to our subscribers.",
+        "paragraph_message_2": "All subscription coffee is roasted to order and dispatched in a mailbox* friendly package every Wednesday.",
+        "paragraph_message_3": "*Height of mailbox package is 40mm, based on the average letterbox height in the UK*"
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection",
-    "f02050c8-8d60-48ca-9638-8be90e4d1b25",
-    "e4c77ba8-68aa-4087-b2ba-d8b02b4f535b"
+    "e4c77ba8-68aa-4087-b2ba-d8b02b4f535b",
+    "f02050c8-8d60-48ca-9638-8be90e4d1b25"
   ]
 }
