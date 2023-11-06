@@ -86,16 +86,16 @@
         {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}
+            {% if product.tags contains 'filter' %}
+              filter
+            {% endif %}
+            {% if product.tags contains 'espresso' %}
+              espresso
+            {% endif %}"
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
               style="--animation-order: {{ forloop.index }};"
-            {% endif %}
-            {% if product.tags contains 'filter' %}
-              data-tags="filter"
-            {% endif %}
-            {% if product.tags contains 'espresso' %}
-              data-tags="espresso"
             {% endif %}
           >
             {% render 'card-product',
@@ -177,55 +177,10 @@
   </div>
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Select the product list container
-    var productList = document.querySelector(".product-grid");
-
-    // Select the filter buttons
-    var showAllButton = document.getElementById("show-all");
-    var showFilterButton = document.getElementById("show-filter");
-    var showEspressoButton = document.getElementById("show-espresso");
-
-    // Add click event listeners to the filter buttons
-    showAllButton.addEventListener("click", function() {
-      filterProducts("all");
-    });
-
-    showFilterButton.addEventListener("click", function() {
-      filterProducts("filter");
-    });
-
-    showEspressoButton.addEventListener("click", function() {
-      filterProducts("espresso");
-    });
-
-    // Function to filter products based on the selected tag
-    function filterProducts(tag) {
-      var productItems = productList.querySelectorAll(".grid__item");
-
-      productItems.forEach(function(item) {
-        var product = item.querySelector(".card-product");
-        var tags = product.dataset.tags.split(",");
-
-        if (tag === "all" || tags.includes(tag)) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    }
-
-    // Initialize by showing all products
-    filterProducts("all");
-  });
-</script>
-
-
 
 {% schema %}
 {
-  "name": "Custom Collection",
+  "name": "Homepage Products",
   "tag": "section",
   "class": "section",
   "disabled_on": {
@@ -500,7 +455,7 @@
   ],
   "presets": [
     {
-      "name": "Custom collection"
+      "name": "Homepage Products"
     }
   ]
 }
