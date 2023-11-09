@@ -69,6 +69,7 @@
     },
     "f02050c8-8d60-48ca-9638-8be90e4d1b25": {
       "type": "sub-flow",
+      "disabled": true,
       "settings": {
         "feature_collection": "coffee",
         "title": "Carefully selected coffee through your door",
