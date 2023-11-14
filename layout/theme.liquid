@@ -343,6 +343,22 @@
       };
     </script>
 
+    <script>var HIDE_POWERED_BY_GORGIAS = true;</script>
+    <script type="text/javascript">
+      var gorgiasChatInterval = window.setInterval(function () {
+        var iframe = document.querySelector('#gorgias-web-messenger-container');
+          if (iframe) { 
+            var head = iframe.contentWindow.document.querySelector('head')
+            if (head.children.length) {
+              window.clearInterval(gorgiasChatInterval); // this line breaks out of the loop - make sure it's not deleted.        
+              var styles = document.createElement('style');
+              styles.textContent = '.logo-wrapper{display: none}'
+              head.appendChild(styles)
+            }
+          }    
+      }, 100);
+    </script>
+
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
