@@ -109,7 +109,6 @@
               section_id: section.id,
               product_tags: product.tags | join: ","
             %}
-            {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
             {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true -%}
           </li>
         {%- else -%}
