@@ -2,13 +2,25 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "aa107f4a-52bb-4994-8cc7-804f9985c39d": {
+      "type": "sub-flow",
+      "settings": {
+        "feature_collection": "",
+        "title": "Carefully selected coffee through your door",
+        "paragraph_message_1": "Our subscription coffees are selected to showcase exceptional seasonal coffee that express their process and origin with clarity. This could be a coffee from our existing range, a preview of a new release, or a small micro-lot exclusive to our subscribers.",
+        "paragraph_message_2": "All subscription coffee is roasted to order and dispatched in a mailbox* friendly package every Wednesday.",
+        "paragraph_message_3": "*Height of mailbox package is 40mm, based on the average letterbox height in the UK*"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "aa107f4a-52bb-4994-8cc7-804f9985c39d"
   ]
 }
