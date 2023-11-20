@@ -27,7 +27,8 @@
         "button"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image": "shopify:\/\/shop_images\/Logo_SQM.svg",
+        "image_overlay_opacity": 20,
         "image_height": "large",
         "desktop_content_position": "bottom-center",
         "show_text_box": false,
