@@ -3514,7 +3514,7 @@ details-disclosure > details {
 
 /* Homepage masonry grid styling */
 
-@media screen and (max-width: 990px) {
+@media screen and (min-width: 990px) {
   .grid {
     display: grid;
     grid-template-columns: 23% 23% 23% 23%;
@@ -3523,7 +3523,14 @@ details-disclosure > details {
     grid-template-areas: "card1 card1 card2 card2" 
                         "card1 card1 card3 card4"
                         "card5 card6 card3 card4"
-                        "card5 card6 card7 card7";
+                        "card5 card6 card7 card7"
+                        "card8 card8 card9 card9"
+                        "card8 card8 card9 card9"
+                        "card10 card10 card11 card11"
+                        "card12 card12 card14 card14"
+                        "card13 card13 card14 card14"
+                        "card15 card16 card17 card17"
+                        "card15 card16 card17 card17";
   }
 
   .grid__item {
@@ -3545,14 +3552,15 @@ details-disclosure > details {
 
   .grid__item:nth-child(3) {
     grid-area: card3;
-    height: 25%;
   }
 
-  .grid__item:nth-child(2) .card-wrapper {
+  .grid__item:nth-child(2) .card-wrapper,
+  .grid__item:nth-child(7) .card-wrapper {
     height: 100%!important;
   }
 
-  .grid__item:nth-child(2) .card__inner {
+  .grid__item:nth-child(2) .card__inner,
+  .grid__item:nth-child(7) .card__inner {
     height: 200%!important;
   }
 
@@ -3562,30 +3570,45 @@ details-disclosure > details {
   .grid__item:nth-child(6) {
     position: relative;
     top: -280px;
+    height: 25%!important;
   }
 
-  .grid__item:nth-child(2) .card__inner,
-  .grid__item:nth-child(3) .card__inner {
+  .grid__item:nth-child(3),
+  .grid__item:nth-child(4) {
+    height: 50%!important;
+  }
+
+  .grid__item:nth-child(3) .card__inner,
+  .grid__item:nth-child(4) .card__inner,
+  .grid__item:nth-child(5) .card__inner,
+  .grid__item:nth-child(6) .card__inner {
     height: 200%!important;
+  }
+
+  .grid__item:nth-child(3) .card-wrapper,
+  .grid__item:nth-child(4) .card-wrapper,
+  .grid__item:nth-child(5) .card-wrapper,
+  .grid__item:nth-child(6) .card-wrapper {
+    height: 300%!important;
   }
 
   .grid__item:nth-child(6) {
     grid-area: card6;
-    height: 50%; 
   }
 
   .grid__item:nth-child(5) {
     grid-area: card5;
-    height: 25%; 
   }
 
   .grid__item:nth-child(4) {
     grid-area: card4;
-    height: 25%; 
   }
 
   .grid__item:nth-child(7) {
     grid-area: card7;
+    height: 20%;
+    position: relative;
+    top: -150px;
   }
 
   .grid__item .no-js-hidden,
