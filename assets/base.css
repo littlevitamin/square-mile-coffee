@@ -3520,6 +3520,18 @@ details-disclosure > details {
   }
 }
 
+.product-description,
+.card-information .price {
+  display: none;
+}
+
+.card__heading {
+  font-size: 28px;
+  line-height: 36px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 @media screen and (min-width: 990px) {
   .grid {
     display: grid;
@@ -3549,6 +3561,24 @@ details-disclosure > details {
   .grid__item:nth-child(1) {
     grid-area: card1;
     height: 50%;
+  }
+
+  .grid__item:nth-child(1) .product-description {
+    display: block;
+  }
+
+  .grid__item:nth-child(1) .card--media {
+    flex-direction: row;
+  }
+
+  .grid__item:nth-child(1) .card__border {
+    padding-left: 5px;
+    border: 5px solid #F7904E;
+    border-top-width: 60px;
+  }
+
+  .grid__item:nth-child(1) .card__media .media img {
+    object-fit: unset!important;
   }
 
   .grid__item:nth-child(2) {
