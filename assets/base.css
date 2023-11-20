@@ -3514,6 +3514,12 @@ details-disclosure > details {
 
 /* Homepage masonry grid styling */
 
+@media screen and (max-width: 989px) {
+  .grid__item {
+    padding: 5px;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .grid {
     display: grid;
@@ -3704,9 +3710,9 @@ details-disclosure > details {
   .grid__item:nth-child(17) {
     grid-area: card17;
   }
+}
 
-  .grid__item .no-js-hidden,
-  .grid__item .form {
-    display: none;
-  }
+.grid__item .no-js-hidden,
+.grid__item .form {
+  display: none;
 }
