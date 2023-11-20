@@ -3512,6 +3512,16 @@ details-disclosure > details {
   }
 }
 
+/* Homepage image banner */
+
+.banner__media > img {
+  object-fit: contain;
+}
+
+.banner--desktop-transparent {
+  background: #E2515A;
+}
+
 /* Homepage masonry grid styling */
 
 @media screen and (max-width: 989px) {
