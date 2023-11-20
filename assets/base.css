@@ -3511,3 +3511,85 @@ details-disclosure > details {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
 }
+
+/* Homepage masonry grid styling */
+
+@media screen and (max-width: 990px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 23% 23% 23% 23%;
+    grid-template-rows: auto auto auto auto;
+    grid-gap: 2%;
+    grid-template-areas: "card1 card1 card2 card2" 
+                        "card1 card1 card3 card4"
+                        "card5 card6 card3 card4"
+                        "card5 card6 card7 card7";
+  }
+
+  .grid__item {
+    padding: 10px;
+    width: 100%!important;
+    max-width: 100%!important;
+  }
+
+  /* Specific styling for each grid item based on its position */
+  .grid__item:nth-child(1) {
+    grid-area: card1;
+    height: 50%;
+  }
+
+  .grid__item:nth-child(2) {
+    grid-area: card2;
+    height: 25%;
+  }
+
+  .grid__item:nth-child(3) {
+    grid-area: card3;
+    height: 25%;
+  }
+
+  .grid__item:nth-child(2) .card-wrapper {
+    height: 100%!important;
+  }
+
+  .grid__item:nth-child(2) .card__inner {
+    height: 200%!important;
+  }
+
+  .grid__item:nth-child(3),
+  .grid__item:nth-child(4),
+  .grid__item:nth-child(5),
+  .grid__item:nth-child(6) {
+    position: relative;
+    top: -280px;
+  }
+
+  .grid__item:nth-child(2) .card__inner,
+  .grid__item:nth-child(3) .card__inner {
+    height: 200%!important;
+  }
+
+  .grid__item:nth-child(6) {
+    grid-area: card6;
+    height: 50%; 
+  }
+
+  .grid__item:nth-child(5) {
+    grid-area: card5;
+    height: 25%; 
+  }
+
+  .grid__item:nth-child(4) {
+    grid-area: card4;
+    height: 25%; 
+  }
+
+  .grid__item:nth-child(7) {
+    grid-area: card7;
+  }
+
+  .grid__item .no-js-hidden,
+  .grid__item .form {
+    display: none;
+  }
+}

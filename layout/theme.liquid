@@ -366,38 +366,47 @@
 
   {% comment %}Homepage product section filtering option{% endcomment %}
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var productList = document.querySelector(".product-grid");
-      var showAllButton = document.getElementById("show-all");
-      var showFilterButton = document.getElementById("show-filter");
-      var showEspressoButton = document.getElementById("show-espresso");
+document.addEventListener("DOMContentLoaded", function() {
+  var productList = document.querySelector(".product-grid");
+  var showAllButton = document.getElementById("show-all");
+  var showFilterButton = document.getElementById("show-filter");
+  var showEspressoButton = document.getElementById("show-espresso");
 
-      showAllButton.addEventListener("click", function() {
-        filterProducts("all");
-      });
+  showAllButton.addEventListener("click", function() {
+    filterProducts("all");
+  });
 
-      showFilterButton.addEventListener("click", function() {
-        filterProducts("filter");
-      });
+  showFilterButton.addEventListener("click", function() {
+    filterProducts("filter");
+  });
 
-      showEspressoButton.addEventListener("click", function() {
-        filterProducts("espresso");
-      });
+  showEspressoButton.addEventListener("click", function() {
+    filterProducts("espresso");
+  });
 
-      function filterProducts(tag) {
-        var productItems = productList.querySelectorAll(".grid__item");
+  function filterProducts(tag) {
+    var productItems = productList.querySelectorAll(".grid__item");
+    var hiddenItems = [];
 
-        productItems.forEach(function(item) {
-          if (tag === "all" || item.classList.contains(tag)) {
-            item.style.display = "block";
-          } else {
-            item.style.display = "none";
-          }
-        });
+    productItems.forEach(function(item) {
+      if (tag === "all" || item.classList.contains(tag)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+        hiddenItems.push(item);
       }
-
-      filterProducts("all");
     });
+
+    // Move hidden items to the end of the list
+    hiddenItems.forEach(function(hiddenItem) {
+      hiddenItem.remove(); // Detach from the current position
+      productList.appendChild(hiddenItem); // Append to the end
+    });
+  }
+
+  filterProducts("all");
+});
+
   </script>
 
   <script src="{{ '_gsap.js' | asset_url }}" defer="defer"></script>
