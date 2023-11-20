@@ -3592,6 +3592,10 @@ details-disclosure > details {
     object-fit: unset!important;
   }
 
+  .grid__item:nth-child(1) .card-wrapper {
+    height: 125%;
+  }
+
   .grid__item:nth-child(2) {
     grid-area: card2;
     height: 25%;
