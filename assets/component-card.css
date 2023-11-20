@@ -139,6 +139,7 @@
   padding: 1rem;
   width: 100%;
   flex-grow: 1;
+  padding-left: 10px!important;
 }
 
 .card__content--auto-margins {
