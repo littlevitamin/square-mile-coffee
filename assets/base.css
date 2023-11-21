@@ -3525,7 +3525,7 @@ details-disclosure > details {
 /* Homepage masonry grid styling */
 
 @media screen and (max-width: 989px) {
-  .grid__item {
+  .custom__item {
     padding: 5px;
   }
 }
@@ -3548,7 +3548,7 @@ details-disclosure > details {
 }
 
 @media screen and (min-width: 990px) {
-  .grid {
+  .custom__grid {
     display: grid;
     max-height: 3500px;
     grid-template-columns: 23% 23% 23% 23%;
@@ -3567,210 +3567,218 @@ details-disclosure > details {
                         "card15 card16 card17 card17";
   }
 
-  .grid__item {
+  .custom__item {
     width: 100%!important;
     max-width: 100%!important;
   }
 
   /* Specific styling for each grid item based on its position */
-  .grid__item:nth-child(1) {
+  .custom__item:nth-child(1) {
     grid-area: card1;
     height: 50%;
   }
 
-  .grid__item:nth-child(1) .product-description {
+  .custom__item:nth-child(1) .product-description {
     display: block;
   }
 
-  .grid__item:nth-child(1) .card--media {
+  .custom__item:nth-child(1) .card--media {
     flex-direction: row;
   }
 
-  .grid__item:nth-child(1) .card__border {
+  .custom__item:nth-child(1) .card__border {
     padding-left: 5px;
     border: 5px solid #F7904E;
     border-top-width: 60px;
   }
 
-  .grid__item:nth-child(1) .card__media .media img {
-    object-fit: unset!important;
-  }
-
-  .grid__item:nth-child(1) .card-wrapper {
+  .custom__item:nth-child(1) .card-wrapper {
     height: 125%;
   }
 
-  .grid__item:nth-child(2) {
+  .custom__item:nth-child(2) {
     grid-area: card2;
     height: 40%;
     border: 5px solid #E2515A;
     border-left-width: 60px;
   }
 
-  .grid__item:nth-child(2) .product-description {
+  .custom__item:nth-child(2) .product-description,
+  .custom__item:nth-child(7) .product-description {
     display: block;
   }
 
-  .grid__item:nth-child(2) .card__inner {
+  .custom__item:nth-child(2) .card__inner,
+  .custom__item:nth-child(7) .card__inner {
     height: 0%;
   }
 
-  .grid__item:nth-child(3) {
+  .custom__item:nth-child(3) {
     grid-area: card3;
   }
 
-  .grid__item:nth-child(2) .card-wrapper,
-  .grid__item:nth-child(7) .card-wrapper {
+  .custom__item:nth-child(2) .card-wrapper,
+  .custom__item:nth-child(7) .card-wrapper {
     height: 100%!important;
   }
 
-  .grid__item:nth-child(10) .card-wrapper,
-  .grid__item:nth-child(11) .card-wrapper,
-  .grid__item:nth-child(12) .card-wrapper,
-  .grid__item:nth-child(13) .card-wrapper {
+  .custom__item:nth-child(10) .card-wrapper,
+  .custom__item:nth-child(11) .card-wrapper,
+  .custom__item:nth-child(12) .card-wrapper,
+  .custom__item:nth-child(13) .card-wrapper {
     height: 50%!important;
   }
 
-  .grid__item:nth-child(7) .card__inner,
-  .grid__item:nth-child(10) .card__inner,
-  .grid__item:nth-child(11) .card__inner,
-  .grid__item:nth-child(12) .card__inner,
-  .grid__item:nth-child(13) .card__inner {
+  .custom__item:nth-child(10) .card__inner,
+  .custom__item:nth-child(11) .card__inner,
+  .custom__item:nth-child(12) .card__inner,
+  .custom__item:nth-child(13) .card__inner {
     height: 200%!important;
   }
 
-  .grid__item:nth-child(3),
-  .grid__item:nth-child(4),
-  .grid__item:nth-child(5),
-  .grid__item:nth-child(6) {
+  .custom__item:nth-child(3),
+  .custom__item:nth-child(4),
+  .custom__item:nth-child(5),
+  .custom__item:nth-child(6) {
     position: relative;
     top: -320px;
     height: 25%!important;
   }
 
-  .grid__item:nth-child(3),
-  .grid__item:nth-child(4) {
+  .custom__item:nth-child(3),
+  .custom__item:nth-child(4) {
     height: 50%!important;
   }
 
-  .grid__item:nth-child(3) .card__inner,
-  .grid__item:nth-child(4) .card__inner,
-  .grid__item:nth-child(5) .card__inner,
-  .grid__item:nth-child(6) .card__inner,
-  .grid__item:nth-child(15) .card__inner,
-  .grid__item:nth-child(16) .card__inner {
-    height: 200%!important;
+  .custom__item:nth-child(3) .card__inner,
+  .custom__item:nth-child(4) .card__inner,
+  .custom__item:nth-child(5) .card__inner,
+  .custom__item:nth-child(6) .card__inner,
+  .custom__item:nth-child(15) .card__inner,
+  .custom__item:nth-child(16) .card__inner {
+    height: 50%!important;
   }
 
-  .grid__item:nth-child(3) .card-wrapper,
-  .grid__item:nth-child(4) .card-wrapper,
-  .grid__item:nth-child(5) .card-wrapper,
-  .grid__item:nth-child(6) .card-wrapper {
+  .custom__item:nth-child(3) .product-description,
+  .custom__item:nth-child(4) .product-description,
+  .custom__item:nth-child(5) .product-description,
+  .custom__item:nth-child(6) .product-description,
+  .custom__item:nth-child(15) .product-description,
+  .custom__item:nth-child(16) .product-description {
+    display: block!important;
+  }
+
+  .custom__item:nth-child(3) .card-wrapper,
+  .custom__item:nth-child(4) .card-wrapper,
+  .custom__item:nth-child(5) .card-wrapper,
+  .custom__item:nth-child(6) .card-wrapper {
     height: 300%!important;
   }
 
-  .grid__item:nth-child(15) .card-wrapper,
-  .grid__item:nth-child(16) .card-wrapper {
+  .custom__item:nth-child(15) .card-wrapper,
+  .custom__item:nth-child(16) .card-wrapper {
     height: 100%!important;
   }
 
-  .grid__item:nth-child(6) {
+  .custom__item:nth-child(6) {
     grid-area: card6;
   }
 
-  .grid__item:nth-child(5) {
+  .custom__item:nth-child(5) {
     grid-area: card5;
   }
 
-  .grid__item:nth-child(4) {
+  .custom__item:nth-child(4) {
     grid-area: card4;
   }
 
-  .grid__item:nth-child(7) {
+  .custom__item:nth-child(7) {
     grid-area: card7;
-    height: 20%;
     position: relative;
     top: -150px;
+    height: 40%;
+    border: 5px solid #EFC745;
+    border-left-width: 60px;
   }
 
-  .grid__item:nth-child(8) {
+  .custom__item:nth-child(8) {
     grid-area: card8;
     position: relative;
     top: -550px;
   }
 
-  .grid__item:nth-child(9) {
+  .custom__item:nth-child(9) {
     grid-area: card9;
     position: relative;
     top: -520px;
   }
 
-  .grid__item:nth-child(10) {
+  .custom__item:nth-child(10) {
     grid-area: card10;
     position: relative;
     top: -600px;
     height: 50%;
   }
 
-  .grid__item:nth-child(11) {
+  .custom__item:nth-child(11) {
     grid-area: card11;
     position: relative;
     top: -580px;
     height: 50%;
   }
 
-  .grid__item:nth-child(12) {
+  .custom__item:nth-child(12) {
     grid-area: card12;
     height: 50%;
   }
 
-  .grid__item:nth-child(13) {
+  .custom__item:nth-child(13) {
     grid-area: card13;
     height: 50%;
   }
 
-  .grid__item:nth-child(14) {
+  .custom__item:nth-child(14) {
     grid-area: card14;
   }
 
-  .grid__item:nth-child(14) {
+  .custom__item:nth-child(14) {
     position: relative;
     top: -830px;
   }
 
-  .grid__item:nth-child(12) {
+  .custom__item:nth-child(12) {
     position: relative;
     top: -850px;
     height: 40%;
   }
 
-  .grid__item:nth-child(13) {
+  .custom__item:nth-child(13) {
     position: relative;
     top: -1170px;
     height: 40%;
   }
 
-  .grid__item:nth-child(15),
-  .grid__item:nth-child(16),
-  .grid__item:nth-child(17) {
+  .custom__item:nth-child(15),
+  .custom__item:nth-child(16),
+  .custom__item:nth-child(17) {
     position: relative;
     top: -1500px;
   }
 
-  .grid__item:nth-child(15) {
+  .custom__item:nth-child(15) {
     grid-area: card15;
   }
 
-  .grid__item:nth-child(16) {
+  .custom__item:nth-child(16) {
     grid-area: card16;
   }
 
-  .grid__item:nth-child(17) {
+  .custom__item:nth-child(17) {
     grid-area: card17;
   }
 }
 
-.grid__item .no-js-hidden,
-.grid__item .form {
+.custom__item .no-js-hidden,
+.custom__item .form {
   display: none;
 }
