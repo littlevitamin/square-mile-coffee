@@ -42,7 +42,6 @@
     },
     "e4c77ba8-68aa-4087-b2ba-d8b02b4f535b": {
       "type": "custom-products",
-      "disabled": true,
       "settings": {
         "title": "<strong>FEATURED PRODUCTS<\/strong>",
         "heading_size": "h1",
