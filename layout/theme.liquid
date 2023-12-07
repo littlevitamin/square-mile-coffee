@@ -375,6 +375,7 @@
       var showAllButton = document.getElementById("show-all");
       var showFilterButton = document.getElementById("show-filter");
       var showEspressoButton = document.getElementById("show-espresso");
+      var originalOrder = Array.from(productList.children);
     
       showAllButton.addEventListener("click", function () {
         filterProducts("all");
@@ -415,12 +416,16 @@
           hiddenItem.remove();
           productList.appendChild(hiddenItem);
         });
+    
+        if (tag === "all") {
+          originalOrder.forEach(function (item) {
+            productList.appendChild(item);
+          });
+        }
       }
     
       filterProducts("all");
     });
-
-
   </script>
 
   <script src="{{ '_gsap.js' | asset_url }}" defer="defer"></script>
