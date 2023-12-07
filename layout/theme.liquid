@@ -411,7 +411,7 @@
           });
         }
     
-        hiddenItems.forEach(function(hiddenItem) {
+        hiddenItems.reverse().forEach(function(hiddenItem) {
           hiddenItem.remove();
           productList.appendChild(hiddenItem);
         });
