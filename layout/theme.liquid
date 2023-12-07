@@ -370,31 +370,31 @@
 
   {% comment %}Homepage product section filtering option{% endcomment %}
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       var productList = document.querySelector(".product-grid");
       var showAllButton = document.getElementById("show-all");
       var showFilterButton = document.getElementById("show-filter");
       var showEspressoButton = document.getElementById("show-espresso");
     
-      showAllButton.addEventListener("click", function() {
+      showAllButton.addEventListener("click", function () {
         filterProducts("all");
       });
     
-      showFilterButton.addEventListener("click", function() {
+      showFilterButton.addEventListener("click", function () {
         filterProducts("filter");
       });
     
-      showEspressoButton.addEventListener("click", function() {
+      showEspressoButton.addEventListener("click", function () {
         filterProducts("espresso");
       });
     
       function filterProducts(tag) {
         var productItems = productList.querySelectorAll(".grid__item");
         var hiddenItems = [];
-
+    
         var shouldReorder = tag === "filter" || tag === "espresso";
     
-        productItems.forEach(function(item) {
+        productItems.forEach(function (item) {
           if (tag === "all" || item.classList.contains(tag)) {
             item.style.display = "block";
           } else {
@@ -402,16 +402,16 @@
             hiddenItems.push(item);
           }
         });
-              
+    
         if (shouldReorder) {
           var featuredItems = Array.from(productList.querySelectorAll(".featured"));
-          featuredItems.forEach(function(featuredItem) {
+          featuredItems.reverse().forEach(function (featuredItem) {
             featuredItem.remove();
-            productList.appendChild(featuredItem);
+            productList.insertBefore(featuredItem, productList.firstChild);
           });
         }
     
-        hiddenItems.forEach(function(hiddenItem) {
+        hiddenItems.forEach(function (hiddenItem) {
           hiddenItem.remove();
           productList.appendChild(hiddenItem);
         });
@@ -419,6 +419,7 @@
     
       filterProducts("all");
     });
+
 
   </script>
 
