@@ -411,10 +411,10 @@
           });
         }
     
-          hiddenItems.reverse().forEach(function(hiddenItem) {
-            hiddenItem.remove();
-            productList.insertBefore(hiddenItem, productList.firstChild);
-          });
+        hiddenItems.forEach(function(hiddenItem) {
+          hiddenItem.remove();
+          productList.appendChild(hiddenItem);
+        });
       }
     
       filterProducts("all");
