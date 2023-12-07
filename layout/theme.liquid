@@ -402,12 +402,7 @@
             hiddenItems.push(item);
           }
         });
-    
-        hiddenItems.forEach(function(hiddenItem) {
-          hiddenItem.remove();
-          productList.appendChild(hiddenItem);
-        });
-
+        
         if (shouldReorder) {
           var featuredItems = Array.from(productList.querySelectorAll(".featured"));
           featuredItems.forEach(function(featuredItem) {
@@ -415,6 +410,11 @@
             productList.appendChild(featuredItem);
           });
         }
+    
+        hiddenItems.forEach(function(hiddenItem) {
+          hiddenItem.remove();
+          productList.appendChild(hiddenItem);
+        });
       }
     
       filterProducts("all");
