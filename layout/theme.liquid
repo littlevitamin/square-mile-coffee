@@ -400,10 +400,14 @@
           } else {
             item.style.display = "none";
             hiddenItems.push(item);
-            hiddenItems.reverse();
           }
         });
-        
+
+          hiddenItems.reverse().forEach(function(hiddenItem) {
+            hiddenItem.remove();
+            productList.insertBefore(hiddenItem, productList.firstChild);
+          });
+                
         if (shouldReorder) {
           var featuredItems = Array.from(productList.querySelectorAll(".featured"));
           featuredItems.forEach(function(featuredItem) {
