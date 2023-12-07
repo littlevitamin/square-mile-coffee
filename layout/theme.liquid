@@ -391,7 +391,8 @@
       function filterProducts(tag) {
         var productItems = productList.querySelectorAll(".grid__item");
         var hiddenItems = [];
-        var featuredItems = [];
+
+        var shouldReorder = tag === "filter" || tag === "espresso";
     
         productItems.forEach(function(item) {
           if (tag === "all" || item.classList.contains(tag)) {
@@ -402,7 +403,7 @@
           }
         });
 
-        if (featuredItems.length > 0) {
+        if (shouldReorder) {
           var featuredItems = Array.from(productList.querySelectorAll(".featured"));
           featuredItems.forEach(function(featuredItem) {
             featuredItem.remove();
