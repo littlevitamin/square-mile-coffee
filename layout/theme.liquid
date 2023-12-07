@@ -381,7 +381,7 @@
       });
     
       showFilterButton.addEventListener("click", function() {
-        filterProducts("filter");
+        filterProducts.reverse().("filter");
       });
     
       showEspressoButton.addEventListener("click", function() {
@@ -411,7 +411,7 @@
           });
         }
     
-        hiddenItems.reverse().forEach(function(hiddenItem) {
+        hiddenItems.forEach(function(hiddenItem) {
           hiddenItem.remove();
           productList.appendChild(hiddenItem);
         });
