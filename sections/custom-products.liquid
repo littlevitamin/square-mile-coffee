@@ -92,6 +92,9 @@
             {% endif %}
             {% if product.tags contains 'espresso' %}
               espresso
+            {% endif %}
+            {% if forloop.index == 1 or forloop.index == 8 or forloop.index == 9 or forloop.index == 14 or forloop.index == 17 %}
+              featured
             {% endif %}"
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
