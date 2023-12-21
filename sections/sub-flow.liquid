@@ -1172,18 +1172,10 @@
           }
         };
 
-          if (this.questions.subscriptionPlan == 'Ongoing Subscription' && this.questions.productType == 'Filter' && this.questions.productVariant == 'Filter Blend' &&  && this.questions.productDurationFrequency = 'Weekly') {
-            var data = {
-              "id": "47020235325748",
-              "quantity": 1,
-              "selling_plan": "690243830068",
-            }
-          } else {
-            var data = {
-              "id": this.productId,
-              "quantity": 1,
-              "selling_plan": this.sellingPlan,
-            }
+          var data = {
+            "id": "47020235325748",
+            "quantity": 1,
+            "selling_plan": "690243830068",
           }
 
           console.log(data);
