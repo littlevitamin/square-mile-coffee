@@ -976,11 +976,11 @@
                 context.priceEU = context.allProducts[i].variants[b].price;
               }
 
-              if (country == "UK") {
+              if (country == "Europe") {
                 context.priceUK = context.allProducts[i].variants[b].price;
               }
 
-              if (country == "Rest of World") {
+              if (country == "Europe") {
                 context.priceRow = context.allProducts[i].variants[b].price;
 
               }
@@ -1172,10 +1172,18 @@
           }
         };
 
-          var data = {
-            "id": "47020235325748",
-            "quantity": 1,
-            "selling_plan": "690243830068",
+          if (this.questions.subscriptionPlan == 'Ongoing Subscription' && this.questions.productType == 'Filter' && this.questions.productVariant == 'Filter Blend' &&  && this.questions.productDurationFrequency = 'Weekly') {
+            var data = {
+              "id": "47020235325748",
+              "quantity": 1,
+              "selling_plan": "690243830068",
+            }
+          } else {
+            var data = {
+              "id": this.productId,
+              "quantity": 1,
+              "selling_plan": this.sellingPlan,
+            }
           }
 
           console.log(data);
