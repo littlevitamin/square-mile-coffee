@@ -1119,19 +1119,17 @@
         console.log(ProductBuildSku);
 
 
+         for (let i = 0;i < this.allProducts.length;i++) {
+           for (let b = 0;b < this.allProducts[i].variants.length;b++) {
+             var productSku = this.allProducts[i].variants[b].sku.toLowerCase();
+             if (productSku == ProductBuildSku) {
+               this.productId = this.allProducts[i].variants[b].id;
+               this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
+               console.log(`sell_plan: ${this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id}`);
+               console.log(`var_id:${this.allProducts[i].variants[b].id}`);
+             }
+           }
 
-       
-        // for (let i = 0;i < this.allProducts.length;i++) {
-        //   for (let b = 0;b < this.allProducts[i].variants.length;b++) {
-        //     var productSku = this.allProducts[i].variants[b].sku.toLowerCase();
-        //     if (productSku == ProductBuildSku) {
-        //       this.productId = this.allProducts[i].variants[b].id;
-        //       this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
-        //       console.log(`sell_plan: ${this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id}`);
-        //       console.log(`var_id:${this.allProducts[i].variants[b].id}`);
-        //     }
-        //   }
-        // };
 
       
 
