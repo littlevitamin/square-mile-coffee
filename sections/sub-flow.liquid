@@ -1172,11 +1172,27 @@
           }
         };
 
-          var data = {
-            "id": "47020235325748",
-            "quantity": 1,
-            "selling_plan": "690243830068",
+        var data = {
+          "quantity": 1,
+        };
+        
+        if (questions.productBagSize === "350G") {
+          if (questions.productVariant === "Filter Blend") {
+            if (questions.productDeliveryFrequency === "Weekly") {
+              data.id = "47020235325748";
+              data.selling_plan = "690243830068";
+            } else if (questions.productDeliveryFrequency === "Fortnightly") {
+              data.id = "47020235325748";
+              data.selling_plan = "690243797300";
+            } else if (questions.productDeliveryFrequency === "Monthly") {
+              data.id = "47020235325748";
+              data.selling_plan = "690243862836";
+            }
+          } else if (questions.productVariant === "Our Pick") {
+          } else if (questions.productVariant === "Decaf") {
           }
+        } else if (questions.productBagSize === "1KG") {
+        }
 
           console.log(data);
    
