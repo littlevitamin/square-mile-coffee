@@ -1222,14 +1222,51 @@
             }
           }
         } else if (this.questions.productBagSize === "1KG") {
-          if (this.questions.productVariant === "Filter Blend") {
-            // Add logic for 'Filter Blend' variant, 1KG
+            if (this.questions.productVariant === "Filter Blend") {
+            if (this.questions.productDeliveryFrequency === "Weekly") {
+              data.id = "47020235358516";
+              data.selling_plan = "690243830068";
+            } else if (this.questions.productDeliveryFrequency === "Fortnightly") {
+              data.id = "47020235358516";
+              data.selling_plan = "690243797300";
+            } else if (this.questions.productDeliveryFrequency === "Monthly") {
+              data.id = "47020235358516";
+              data.selling_plan = "690243862836";
+            }
           } else if (this.questions.productVariant === "Our Pick") {
-            // Add logic for 'Our Pick' variant, 1KG
+            if (this.questions.productDeliveryFrequency === "Weekly") {
+              data.id = "47020233851188";
+              data.selling_plan = "690243666228";
+            } else if (this.questions.productDeliveryFrequency === "Fortnightly") {
+              data.id = "47020233851188";
+              data.selling_plan = "690243698996";
+            } else if (this.questions.productDeliveryFrequency === "Monthly") {
+              data.id = "47020233851188";
+              data.selling_plan = "690243731764";
+            }
           } else if (this.questions.productVariant === "Decaf") {
-            // Add logic for 'Decaf' variant, 1KG
+            if (this.questions.productDeliveryFrequency === "Weekly") {
+              data.id = "47020230869300";
+              data.selling_plan = "690212405556";
+            } else if (this.questions.productDeliveryFrequency === "Fortnightly") {
+              data.id = "47020230869300";
+              data.selling_plan = "690212438324";
+            } else if (this.questions.productDeliveryFrequency === "Monthly") {
+              data.id = "47020230869300";
+              data.selling_plan = "690212471092";
+            }
+          } else if (this.questions.productVariant === "Red Brick") {
+            if (this.questions.productDeliveryFrequency === "Weekly") {
+              data.id = "47020231426356";
+              data.selling_plan = "690311823668";
+            } else if (this.questions.productDeliveryFrequency === "Fortnightly") {
+              data.id = "47020231426356";
+              data.selling_plan = "690311889204";
+            } else if (this.questions.productDeliveryFrequency === "Monthly") {
+              data.id = "47020231426356";
+              data.selling_plan = "690311856436";
+            }
           }
-          // Add more conditions for other variants as needed
         }
 
           console.log(data);
