@@ -1175,7 +1175,6 @@
         var data = {
           "quantity": 1,
         };
-        
         if (this.questions.productBagSize === "350G") {
           if (this.questions.productVariant === "Filter Blend") {
             if (this.questions.productDeliveryFrequency === "Weekly") {
@@ -1188,11 +1187,37 @@
               data.id = "47020235325748";
               data.selling_plan = "690243862836";
             }
-          } else if (questions.productVariant === "Our Pick") {
-          } else if (questions.productVariant === "Decaf") {
+          } else if (this.questions.productVariant === "Our Pick Espresso") {
+            if (this.questions.productDeliveryFrequency === "Weekly") {
+              data.id = "47020233785652";
+              data.selling_plan = "690243666228";
+            } else if (this.questions.productDeliveryFrequency === "Fortnightly") {
+              data.id = "47020233785652";
+              data.selling_plan = "690243698996";
+            } else if (this.questions.productDeliveryFrequency === "Monthly") {
+              data.id = "47020233785652";
+              data.selling_plan = "690243731764";
+            }
+          } else if (this.questions.productVariant === "Decaf") {
+            // Add logic for 'Decaf' variant
           }
-        } else if (questions.productBagSize === "1KG") {
+        } else if (this.questions.productBagSize === "1KG") {
+          if (this.questions.productVariant === "Filter Blend") {
+            // Add logic for 'Filter Blend' variant, 1KG
+          } else if (this.questions.productVariant === "Our Pick") {
+            // Add logic for 'Our Pick' variant, 1KG
+          } else if (this.questions.productVariant === "Decaf") {
+            // Add logic for 'Decaf' variant, 1KG
+          }
+          // Add more conditions for other variants as needed
         }
+
+// Repeat the above structure for other productBagSize options
+
+console.log(data);
+
+// Continue with the AJAX call
+
 
           console.log(data);
    
