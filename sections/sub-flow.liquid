@@ -1358,27 +1358,26 @@
         };
           
         var data = {
-          "quantity": 1,
-          "id": "47416577818932",
-          "selling_plan": "690330534196"
+          "quantity": 1,          
+          // "id": "47416577818932",
+          // "selling_plan": "690330534196"
         };
-        if (this.questions.productDurationFrequency === "3 months") {
-          console.log("Condition 1 met");
-          if (this.questions.productType === "Espresso") {
-            console.log("Condition 2 met");
-            if (this.questions.productVariant === "Our Pick") {
-              console.log("Condition 3 met");
-              if (this.questions.productBagSize === "350G") {
-                console.log("Condition 4 met");
-                if (this.questions.productDeliveryFrequency === "Fortnightly") {
-                  console.log("All conditions met. Adding product to cart.");
+        // if (this.questions.productDurationFrequency === "3 months") {
+        //   console.log("Condition 1 met");
+        //   if (this.questions.productType === "Espresso") {
+        //     console.log("Condition 2 met");
+        //     if (this.questions.productVariant === "Our Pick") {
+        //       console.log("Condition 3 met");
+        //       if (this.questions.productBagSize === "350G") {
+        //         console.log("Condition 4 met");
+                // if (this.questions.productDeliveryFrequency === "Fortnightly") {
                   data.id = "47416577818932";
                   data.selling_plan = "690330534196";
-                }
-              }
-            }
-          }
-        }
+                // }
+        //       }
+        //     }
+        //   }
+        // }
 
         console.log(data);
 
