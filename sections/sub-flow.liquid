@@ -1137,7 +1137,6 @@
 
 
         if (this.questions.subscriptionPlan == 'Ongoing Subscription') {
-        console.log('check')
           var shipping_frequency;
           var shipping_interval_unit;
           switch (this.questions.productDeliveryFrequency) {
@@ -1310,95 +1309,78 @@
         }
        
 
-        if (this.questions.subscriptionPlan == 'PLAN SUBSCRIPTION') {
-          var testOption = this.questions.productSubscriptionOption;
-          var shipping_interval_unit;
+//         if (this.questions.subscriptionPlan == 'PLAN SUBSCRIPTION') {
+//           var testOption = this.questions.productSubscriptionOption;
+//           var shipping_interval_unit;
 
 
-          switch (this.questions.productDeliveryFrequency) {
-            case "Fortnightly":
-              shipping_interval_unit = "14";
-              break;
-            case "Weekly":
-              shipping_interval_unit = "7";
-              break;
-            case "Monthly":
-              shipping_interval_unit = "30";
-              break;
+//           switch (this.questions.productDeliveryFrequency) {
+//             case "Fortnightly":
+//               shipping_interval_unit = "14";
+//               break;
+//             case "Weekly":
+//               shipping_interval_unit = "7";
+//               break;
+//             case "Monthly":
+//               shipping_interval_unit = "30";
+//               break;
 
-          };
+//           };
 
-          switch (this.questions.productDurationFrequency) {
-            case "3 Months":
-              shipping_frequency = "90";
-              break;
-            case "6 Months":
-              shipping_frequency = "180";
-              break;
-            case "12 Months":
-              shipping_frequency = "360";
-              break;
+//           switch (this.questions.productDurationFrequency) {
+//             case "3 Months":
+//               shipping_frequency = "90";
+//               break;
+//             case "6 Months":
+//               shipping_frequency = "180";
+//               break;
+//             case "12 Months":
+//               shipping_frequency = "360";
+//               break;
 
-          };
+//           };
 
          
 
-        for (let i = 0; i < this.allProducts.length; i++) {
-          for (let b = 0; b < this.allProducts[i].variants.length; b++) {
-            var productSku = this.allProducts[i].variants[b].sku;
-            if (productSku && productSku.toLowerCase() === ProductBuildSku.toLowerCase()) {
-              if (this.allProducts[i].variants[b].selling_plan_allocations.length > 0) {
-                this.productId = this.allProducts[i].variants[b].id;
-                this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
-                console.log(`sell_plan: ${this.sellingPlan}`);
-                console.log(`var_id: ${this.productId}`);
-              }
-            }
-          }
-        };
+//         for (let i = 0; i < this.allProducts.length; i++) {
+//           for (let b = 0; b < this.allProducts[i].variants.length; b++) {
+//             var productSku = this.allProducts[i].variants[b].sku;
+//             if (productSku && productSku.toLowerCase() === ProductBuildSku.toLowerCase()) {
+//               if (this.allProducts[i].variants[b].selling_plan_allocations.length > 0) {
+//                 this.productId = this.allProducts[i].variants[b].id;
+//                 this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
+//                 console.log(`sell_plan: ${this.sellingPlan}`);
+//                 console.log(`var_id: ${this.productId}`);
+//               }
+//             }
+//           }
+//         };
           
-        var data = {
-          "quantity": 1,
-        };
+//         var data = {
+//           "quantity": 1,
+//         };
 
-if (this.questions.productDurationFrequency === "3 months") {
-  console.log("Condition 1 met");
-  if (this.questions.productType === "Espresso") {
-    console.log("Condition 2 met");
-    if (this.questions.productVariant === "Our Pick") {
-      console.log("Condition 3 met");
-      if (this.questions.productBagSize === "350G") {
-        console.log("Condition 4 met");
-        if (this.questions.productDeliveryFrequency === "Fortnightly") {
-          console.log("All conditions met. Adding product to cart.");
-          data.id = "47416577818932";
-          data.selling_plan = "690330534196";
-        }
-      }
-    }
-  }
-}
 
-        console.log(data);
+//         console.log(data);
 
-          //    debugger    
-          jQuery.ajax({
-            type: 'post',
-            url: '/cart/add.js',
-            data: data,
-            dataType: 'json',
-            success: function () {
-              window.location = '/checkout';
-            },
-            error: function (XMLHttpRequest) {
-              console.log(XMLHttpRequest.responseText);
-            }
-          });
-        }
+//           //    debugger    
+//           jQuery.ajax({
+//             type: 'post',
+//             url: '/cart/add.js',
+//             data: data,
+//             dataType: 'json',
+//             success: function () {
+//               window.location = '/checkout';
+//             },
+//             error: function (XMLHttpRequest) {
+//               console.log(XMLHttpRequest.responseText);
+//             }
+//           });
+//         }
 
-      },
+//       },
 
-    },
+//     },
 
     //          mounted () {
     //     axios
