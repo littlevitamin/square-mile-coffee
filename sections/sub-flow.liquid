@@ -1364,6 +1364,20 @@
           if (this.questions.productType === "Espresso") {
             if (this.questions.productVariant === "Our Pick") {
               if (this.questions.productBagSize === "350G") {
+                if (this.questions.productDeliveryFrequency === "Weekly") {
+                  if (NewMonths === "3mo") {
+                    data.id = "47020227199284";
+                    data.selling_plan = "690331025716";
+                  }
+                  if (NewMonths === "6mo") {
+                    data.id = "47416930304308";
+                    data.selling_plan = "690331058484";
+                  }
+                  if (NewMonths === "12mo") {
+                    data.id = "47416930533684";
+                    data.selling_plan = "690331091252";
+                  }
+                }
                 if (this.questions.productDeliveryFrequency === "Fortnightly") {
                   if (NewMonths === "3mo") {
                     data.id = "47416577818932";
@@ -1378,10 +1392,67 @@
                     data.selling_plan = "690330337588";
                   }
                 }
+                if (this.questions.productDeliveryFrequency === "Monthly") {
+                  if (NewMonths === "3mo") {
+                    data.id = "47020224250164";
+                    data.selling_plan = "690330927412";
+                  }
+                  if (NewMonths === "6mo") {
+                    data.id = "47416906219828";
+                    data.selling_plan = "690330960180";
+                  }
+                  if (NewMonths === "12mo") {
+                    data.id = "47416911331636";
+                    data.selling_plan = "690330992948";
+                  }
+                }
+              }
+              if (this.questions.productBagSize === "1KG") {
+                if (this.questions.productDeliveryFrequency === "Weekly") {
+                  if (NewMonths === "3mo") {
+                    data.id = "47020227199284";
+                    data.selling_plan = "690331025716";
+                  }
+                  if (NewMonths === "6mo") {
+                    data.id = "47416930304308";
+                    data.selling_plan = "690331058484";
+                  }
+                  if (NewMonths === "12mo") {
+                    data.id = "47416930533684";
+                    data.selling_plan = "690331091252";
+                  }
+                }
+                if (this.questions.productDeliveryFrequency === "Fortnightly") {
+                  if (NewMonths === "3mo") {
+                    data.id = "47416577818932";
+                    data.selling_plan = "690330534196";
+                  }
+                  if (NewMonths === "6mo") {
+                    data.id = "47416576540980";
+                    data.selling_plan = "690330501428";
+                  }
+                  if (NewMonths === "12mo") {
+                    data.id = "47020225397044";
+                    data.selling_plan = "690330337588";
+                  }
+                }
+                if (this.questions.productDeliveryFrequency === "Monthly") {
+                  if (NewMonths === "3mo") {
+                    data.id = "47020224250164";
+                    data.selling_plan = "690330927412";
+                  }
+                  if (NewMonths === "6mo") {
+                    data.id = "47416906219828";
+                    data.selling_plan = "690330960180";
+                  }
+                  if (NewMonths === "12mo") {
+                    data.id = "47416911331636";
+                    data.selling_plan = "690330992948";
+                  }
+                }
               }
             }
           }
-        // }
 
         console.log(data);
 
