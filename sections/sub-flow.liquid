@@ -1342,40 +1342,29 @@
 
          
 
-      for (let i = 0;i < this.allProducts.length;i++) {
-        for (let b = 0;b < this.allProducts[i].variants.length;b++) {
-          var productSku = this.allProducts[i].variants[b].sku.toLowerCase();
-          if (productSku == ProductBuildSku) {
-       
-            debugger
-
-            if(this.allProducts[i].variants[b].selling_plan_allocations.length ) {
-            this.productId = this.allProducts[i].variants[b].id;
-            this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
-            console.log(`sell_plan: ${this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id}`);
-            console.log(`var_id:${this.allProducts[i].variants[b].id}`);
-            }
-            
-          }
-        }
-      };
-         // debugger
-            var data = {
-              "quantity": 1,
-            };
-
-        if (this.questions.productDurationFrequency === "3 months") {
-          if (this.questions.productType === "Espresso") {
-            if (this.questions.productVariant === "Our Pick") {
-              if (this.questions.productBagSize === "350G") {
-                if (this.questions.productDeliveryFrequency === "Fortnightly") {
-                  data.id = "47416577818932";
-                  data.selling_plan = "690330534196";
-                }
+        for (let i = 0; i < this.allProducts.length; i++) {
+          for (let b = 0; b < this.allProducts[i].variants.length; b++) {
+            var productSku = this.allProducts[i].variants[b].sku;
+            if (productSku && productSku.toLowerCase() === ProductBuildSku.toLowerCase()) {
+              if (this.allProducts[i].variants[b].selling_plan_allocations.length > 0) {
+                this.productId = this.allProducts[i].variants[b].id;
+                this.sellingPlan = this.allProducts[i].variants[b].selling_plan_allocations[0].selling_plan_id;
+                console.log(`sell_plan: ${this.sellingPlan}`);
+                console.log(`var_id: ${this.productId}`);
               }
             }
           }
-        }
+        };
+          
+        var data = {
+          "id": this.productId,
+          "quantity": 1,
+          "properties": {
+            "shipping_interval_frequency": shipping_frequency,
+            "shipping_interval_unit_type": "days",
+            "subscription_id": this.sellingPlan
+          }
+        };
 
         console.log(data);
 
