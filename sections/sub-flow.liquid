@@ -1362,13 +1362,16 @@
         };
         
           if (this.questions.productType === "Espresso") {
-            console.log("Condition 2 met");
             if (this.questions.productVariant === "Our Pick") {
               if (this.questions.productBagSize === "350G") {
                 if (this.questions.productDeliveryFrequency === "Fortnightly") {
                   if (NewMonths === "3mo") {
                     data.id = "47416577818932";
                     data.selling_plan = "690330534196";
+                  }
+                  if (NewMonths === "12mo") {
+                    data.id = "47020225397044";
+                    data.selling_plan = "690330337588";
                   }
                 }
               }
