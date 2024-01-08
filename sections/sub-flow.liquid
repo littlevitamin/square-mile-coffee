@@ -1361,10 +1361,21 @@
       };
          // debugger
             var data = {
-              "id": this.productId,
               "quantity": 1,
-           "selling_plan": this.sellingPlan,
+            };
+
+        if (this.questions.productDurationFrequency === "3 months") {
+          if (this.questions.productType === "Espresso") {
+            if (this.questions.productVariant === "Our Pick") {
+              if (this.questions.productBagSize === "350G") {
+                if (this.questions.productDeliveryFrequency === "Fortnightly") {
+                  data.id = "47416577818932";
+                  data.selling_plan = "690330534196";
+                }
+              }
             }
+          }
+        }
           
 
           //    debugger    
